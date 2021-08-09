@@ -20,4 +20,22 @@ public final class Names implements IContract
 	public static final String PHONETIC = "phonetic";
 	public static final String NICKNAME = "nickname";
 	public static final String DISPLAY = "display";
+	
+	@Override
+	public List<Pair<String, String>> GetColumns()
+	{
+		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
+			Pair.create(FN, DataTypes.TEXT),
+			Pair.create(LN, DataTypes.TEXT),
+			Pair.create(MN, DataTypes.TEXT),
+			Pair.create(PHONETIC, DataTypes.TEXT),
+			Pair.create(NICKNAME, DataTypes.TEXT),
+			Pair.create(DISPLAY, DataTypes.TEXT || ' DEFAULT FN || ' ' || LN'));
+	}
+
+	@Override
+	public String GetPrimaryKey()
+	{
+		return ID;
+	}
 }
