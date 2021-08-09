@@ -33,7 +33,9 @@ public final class Faves implements IContract
 		return ID;
 	}
   
-  	public static final String FK_TYPE = "fk_type";
-  	public static final String FK_TYPE_TABLE = "favetypes";
-  	public static final String FK_TYPE_COL = "name";
+	@Override
+	public List<ForeignKey> GetForeignKeys()
+	{
+		return Arrays.asList(new ForeignKey("fk_type", ID, FaveTypes.TABLE_NAME, FaveTypes.NAME));
+	}
 }
