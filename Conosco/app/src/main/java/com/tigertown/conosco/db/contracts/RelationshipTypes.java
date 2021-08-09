@@ -13,4 +13,16 @@ public final class RelationshipTypes implements IContract
 	}
 	
 	public static final String NAME = "name";
+	
+	@Override
+	public List<Pair<String, String>> GetColumns()
+	{
+		return Arrays.asList(Pair.create(NAME, DataTypes.TEXT));
+	}
+
+	@Override
+	public String GetPrimaryKey()
+	{
+		return NAME;
+	}
 }
