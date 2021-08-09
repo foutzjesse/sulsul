@@ -39,4 +39,12 @@ public final class Relationships implements IContract
 	public static final String FK_NAME = "fk_name";
 	public static final String FK_NAME_TABLE = "names";
 	public static final String FK_NAME_COL = "id";
+	
+	@Override
+	public List<ForeignKey> GetForeignKeys()
+	{
+		return Arrays.asList(new ForeignKey("fk_person", PERSON_ID, Peeps.TABLE_NAME, Peeps.ID),
+			new ForeignKey("fk_type", TYPE, RelationshipTypes.TABLE_NAME, RelationshipTypes.NAME),
+			new ForeignKey("fk_name", NAME_ID, Names.TABLE_NAME, Names.ID));
+	}
 }
