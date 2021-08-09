@@ -28,4 +28,10 @@ public final class AnniversaryTypes implements IContract
 	{
 		return NAME;
 	}
+	
+	@Override
+	public List<ForeignKey> GetForeignKeys()
+	{
+		return new ArrayList<ForeignKey>();
+	}
 }
