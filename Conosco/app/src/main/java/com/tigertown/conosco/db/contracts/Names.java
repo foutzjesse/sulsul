@@ -6,7 +6,7 @@ public final class Names
 	private Names() {}
 
 	public static final String TABLE_NAME = "names";
-	public static final String ID_COL = "id";
+	public static final String ID = "id";
 	public static final String FN = "fn";
 	public static final String LN = "ln";
 	public static final String MN = "mn";
