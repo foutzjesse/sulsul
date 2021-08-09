@@ -28,4 +28,10 @@ public final class RelationshipTypes implements IContract
 	{
 		return NAME;
 	}
+	
+	@Override
+	public List<ForeignKey> GetForeignKeys()
+	{
+		return new ArrayList<ForeignKey>();
+	}
 }
