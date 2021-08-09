@@ -41,4 +41,10 @@ public final class Names implements IContract
 	{
 		return ID;
 	}
+	
+	@Override
+	public List<ForeignKey> GetForeignKeys()
+	{
+		return new ArrayList<ForeignKey>();
+	}
 }
