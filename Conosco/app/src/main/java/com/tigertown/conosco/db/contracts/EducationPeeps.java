@@ -1,10 +1,16 @@
 package com.tigertown.conosco.db.contracts;
 
-public final class EducationPeeps
+public final class EducationPeeps implements IContract
 {
 	private EducationPeeps() {}
 	
 	public static final String TABLE_NAME = "educationpeeps";
+	
+	@Override
+	public String GetName()
+	{
+		return TABLE_NAME;
+	}
 	
 	public static final String PERSON_ID = "personid";
 	public static final String EDUCATION_ID = "educationid";
