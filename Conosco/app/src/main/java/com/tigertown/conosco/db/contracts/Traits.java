@@ -1,10 +1,16 @@
 package com.tigertown.conosco.db.contracts;
 
-public final class Traits
+public final class Traits implements IContract
 {
 	private Traits() {}
 	
 	public static final String TABLE_NAME = "traits";
+	
+	@Override
+	public String GetName()
+	{
+		return TABLE_NAME;
+	}
 	
 	public static final String ID = "id";
 	public static final String NAME = "name";
