@@ -31,10 +31,10 @@ public final class EducationPeeps implements IContract
 		return PERSON_ID + ", " + EDUCATION_ID;
 	}
 	
-	public static final String FK_PERSON = "fk_person";
-	public static final String FK_PERSON_TABLE = "peeps";
-	public static final String FK_PERSON_COL = "id";
-	public static final String FK_EDUCATION = "fk_education";
-	public static final String FK_EDUCATION_TABLE = "educationdata";
-	public static final String FK_EDUCATION_COL = "id";
+	@Override
+	public List<ForeignKey> GetForeignKeys()
+	{
+		return Arrays.asList(new ForeignKey("fk_person", PERSON_ID, Peeps.TABLE_NAME, Peeps.ID),
+			new ForeignKey("fk_education", EDUCATION_ID, EducationData.TABLE_NAME, EducationData.ID));
+	}
 }
