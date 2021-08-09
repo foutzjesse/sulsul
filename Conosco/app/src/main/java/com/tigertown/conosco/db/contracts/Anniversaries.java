@@ -12,5 +12,5 @@ public final class Anniversaries
 	
 	public static final String FK_TYPE = "fk_type";
 	public static final String FK_TYPE_TABLE = "anniversarytypes";
-	public static final String FK_TYPE_COL = "id";
+	public static final String FK_TYPE_COL = "name";
 }
