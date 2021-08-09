@@ -31,10 +31,10 @@ public final class FavesPeeps implements IContract
 		return PERSON_ID + ", " + FAVE_ID;
 	}
 
-	public static final String FK_PERSON = "fk_person";
-	public static final String FK_PERSON_TABLE = "peeps";
-	public static final String FK_PERSON_COL = "id";
-	public static final String FK_FAVE = "fk_fave";
-	public static final String FK_FAVE_TABLE = "faves";
-	public static final String FK_FAVE_COL = "id";
+	@Override
+	public List<ForeignKey> GetForeignKeys()
+	{
+		return Arrays.asList(new ForeignKey("fk_person", PERSON_ID, Peeps.TABLE_NAME, Peeps.ID),
+			new ForeignKey("fk_fave", FAVE_ID, Faves.TABLE_NAME, Faves.ID));
+	}
 }
