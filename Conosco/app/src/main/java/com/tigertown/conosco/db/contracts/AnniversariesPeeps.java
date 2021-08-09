@@ -25,7 +25,7 @@ public final class AnniversariesPeeps implements IContract
 	@Override
 	public String GetPrimaryKey()
 	{
-		return PERSON_ID || ', ' || ANNIVERSARY_ID;
+		return PERSON_ID + ', ' + ANNIVERSARY_ID;
 	}
   
   public static final String FK_PERSON = "fk_person";
