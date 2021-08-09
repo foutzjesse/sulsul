@@ -1,4 +1,7 @@
 package com.tigertown.conosco.db.contracts;
+import java.util.*;
+import android.util.*;
+import com.tigertown.conosco.global.*;
 
 public final class EducationPeeps implements IContract
 {
