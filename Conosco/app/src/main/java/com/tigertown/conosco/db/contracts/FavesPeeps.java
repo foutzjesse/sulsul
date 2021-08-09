@@ -1,10 +1,17 @@
 package com.tigertown.conosco.db.contracts;
 
-public final class FavesPeeps
+public final class FavesPeeps implements IContract
 {
 	private FavesPeeps() {}
 	
 	public static final String TABLE_NAME = "favespeeps";
+	
+	@Override
+	public String GetName()
+	{
+		return TABLE_NAME;
+	}
+	
 	public static final String PERSON_ID = "personid";
   public static final String FAVE_ID = "faveid";
   
