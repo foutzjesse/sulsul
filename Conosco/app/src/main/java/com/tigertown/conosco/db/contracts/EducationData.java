@@ -40,4 +40,10 @@ public final class EducationData implements IContract
 	{
 		return ID;
 	}
+	
+	@Override
+	public List<ForeignKey> GetForeignKeys()
+	{
+		return new ArrayList<ForeignKey>();
+	}
 }
