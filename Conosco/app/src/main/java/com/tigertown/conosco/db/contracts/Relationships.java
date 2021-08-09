@@ -13,6 +13,6 @@ public final class Relationships
 	public static final String FK_TYPE_TABLE = "relationshiptypes";
 	public static final String FK_TYPE_COL = "name";
 	public static final String FK_NAME = "fk_name";
-	public static final String FK_NAME_TABLE = "names"
+	public static final String FK_NAME_TABLE = "names";
 	public static final String FK_NAME_COL = "id";
 }
