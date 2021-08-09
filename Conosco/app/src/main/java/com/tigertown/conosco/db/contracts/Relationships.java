@@ -4,7 +4,7 @@ public final class Relationships
 {
 	private Relationships() {}
 	
-	public static final String TABLE_NAME = "relationshiptypes";
+	public static final String TABLE_NAME = "relationships";
 	
 	public static final String TYPE = "type";
 	public static final String NAME_ID = "name_id";
