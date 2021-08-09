@@ -25,7 +25,7 @@ public final class FavesPeeps implements IContract
 	@Override
 	public String GetPrimaryKey()
 	{
-		return PERSON_ID || ', ' || FAVE_ID;
+		return PERSON_ID + ', ' + FAVE_ID;
 	}
 
 	public static final String FK_PERSON = "fk_person";
