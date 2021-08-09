@@ -1,10 +1,16 @@
 package com.tigertown.conosco.db.contracts;
 
-public final class Relationships
+public final class Relationships implements IContract
 {
 	private Relationships() {}
 	
 	public static final String TABLE_NAME = "relationships";
+	
+	@Override
+	public String GetName()
+	{
+		return TABLE_NAME;
+	}
 	
 	public static final String TYPE = "type";
 	public static final String NAME_ID = "name_id";
