@@ -14,4 +14,16 @@ public final class Peeps implements IContract
 	}
 	
 	public static final String ID_COL = "id";
+	
+	@Override
+	public List<Pair<String, String>> GetColumns()
+	{
+		return Arrays.asList(Pair.create(ID, DataTypes.GUID)); //store id as X'123456789012...'
+	}
+
+	@Override
+	public String GetPrimaryKey()
+	{
+		return ID;
+	}
 }
