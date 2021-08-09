@@ -18,4 +18,21 @@ public final class Traits implements IContract
 	public static final String GROUPING = "grouping";
 	public static final String DESCRIPTION = "description";
 	public static final String NOTES = "notes";
+	
+	@Override
+	public List<Pair<String, String>> GetColumns()
+	{
+		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
+			Pair.create(NAME, DataTypes.TEXT),
+			Pair.create(ICON, DataTypes.TEXT),
+			Pair.create(GROUPING, DataTypes.TEXT),
+			Pair.create(DESCRIPTION, DataTypes.TEXT),
+			Pair.create(NOTES, DataTypes.TEXT));
+	}
+
+	@Override
+	public String GetPrimaryKey()
+	{
+		return ID;
+	}
 }
