@@ -13,6 +13,8 @@ public class Person {
     public String hometown;
     public List<Education> education;
     public String residence;
+	
+	public List<Relationship> relationships;
 
     public String job;
     public String socialGroup;
@@ -28,6 +30,11 @@ public class Name {
     public String phonetic;
     public String nickname;
     public String display;
+}
+
+public class Relationship {
+	public String type;
+	public Name name;
 }
 
 public class Trait {
