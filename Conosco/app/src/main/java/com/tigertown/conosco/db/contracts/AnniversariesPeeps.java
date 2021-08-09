@@ -1,10 +1,17 @@
 package com.tigertown.conosco.db.contracts;
 
-public final class AnniversariesPeeps
+public final class AnniversariesPeeps implements IContract
 {
 	private AnniversariesPeeps() {}
 	
 	public static final String TABLE_NAME = "anniversariespeeps";
+	
+	@Override
+	public String GetName()
+	{
+		return TABLE_NAME;
+	}
+	
 	public static final String PERSON_ID = "personid";
   public static final String ANNIVERSARY_ID = "anniversaryid";
   
