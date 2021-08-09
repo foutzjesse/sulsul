@@ -36,6 +36,6 @@ public final class Faves implements IContract
 	@Override
 	public List<ForeignKey> GetForeignKeys()
 	{
-		return Arrays.asList(new ForeignKey("fk_type", ID, FaveTypes.TABLE_NAME, FaveTypes.NAME));
+		return Arrays.asList(new ForeignKey("fk_" + TABLE_NAME + ID, ID, FaveTypes.TABLE_NAME, FaveTypes.NAME));
 	}
 }

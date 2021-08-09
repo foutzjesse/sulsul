@@ -34,7 +34,7 @@ public final class NamesPeeps implements IContract
 	@Override
 	public List<ForeignKey> GetForeignKeys()
 	{
-		return Arrays.asList(new ForeignKey("fk_person", PERSON_ID, Peeps.TABLE_NAME, Peeps.ID),
-			new ForeignKey("fk_name", NAME_ID, Names.TABLE_NAME, Names.ID));
+		return Arrays.asList(new ForeignKey("fk_" + TABLE_NAME + PERSON_ID, PERSON_ID, Peeps.TABLE_NAME, Peeps.ID),
+							 new ForeignKey("fk_" + TABLE_NAME + NAME_ID, NAME_ID, Names.TABLE_NAME, Names.ID));
 	}
 }

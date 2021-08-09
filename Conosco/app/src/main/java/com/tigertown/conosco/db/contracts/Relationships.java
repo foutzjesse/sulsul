@@ -33,18 +33,11 @@ public final class Relationships implements IContract
 		return PERSON_ID + ", " + TYPE + ", " + NAME_ID;
 	}
 	
-	public static final String FK_TYPE = "fk_type";
-	public static final String FK_TYPE_TABLE = "relationshiptypes";
-	public static final String FK_TYPE_COL = "name";
-	public static final String FK_NAME = "fk_name";
-	public static final String FK_NAME_TABLE = "names";
-	public static final String FK_NAME_COL = "id";
-	
 	@Override
 	public List<ForeignKey> GetForeignKeys()
 	{
-		return Arrays.asList(new ForeignKey("fk_person", PERSON_ID, Peeps.TABLE_NAME, Peeps.ID),
-			new ForeignKey("fk_type", TYPE, RelationshipTypes.TABLE_NAME, RelationshipTypes.NAME),
-			new ForeignKey("fk_name", NAME_ID, Names.TABLE_NAME, Names.ID));
+		return Arrays.asList(new ForeignKey("fk_" + TABLE_NAME + PERSON_ID, PERSON_ID, Peeps.TABLE_NAME, Peeps.ID),
+							 new ForeignKey("fk_" + TABLE_NAME + TYPE, TYPE, RelationshipTypes.TABLE_NAME, RelationshipTypes.NAME),
+							 new ForeignKey("fk_" + TABLE_NAME + NAME_ID, NAME_ID, Names.TABLE_NAME, Names.ID));
 	}
 }

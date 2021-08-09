@@ -38,6 +38,6 @@ public final class Anniversaries implements IContract
 	@Override
 	public List<ForeignKey> GetForeignKeys()
 	{
-		return Arrays.asList(new ForeignKey("fk_type", TYPE, AnniversaryTypes.TABLE_NAME, AnniversaryTypes.NAME));
+		return Arrays.asList(new ForeignKey("fk_" + TABLE_NAME + TYPE, TYPE, AnniversaryTypes.TABLE_NAME, AnniversaryTypes.NAME));
 	}
 }
