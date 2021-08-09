@@ -16,7 +16,7 @@ public final class Peeps implements IContract
 		return TABLE_NAME;
 	}
 	
-	public static final String ID_COL = "id";
+	public static final String ID = "id";
 	
 	@Override
 	public List<Pair<String, String>> GetColumns()

@@ -33,7 +33,7 @@ public final class Names implements IContract
 			Pair.create(MN, DataTypes.TEXT),
 			Pair.create(PHONETIC, DataTypes.TEXT),
 			Pair.create(NICKNAME, DataTypes.TEXT),
-			Pair.create(DISPLAY, DataTypes.TEXT || ' DEFAULT FN || ' ' || LN'));
+			Pair.create(DISPLAY, DataTypes.TEXT + " DEFAULT FN || ' ' || LN"));
 	}
 
 	@Override

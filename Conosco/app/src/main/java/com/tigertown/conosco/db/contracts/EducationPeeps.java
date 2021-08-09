@@ -28,7 +28,7 @@ public final class EducationPeeps implements IContract
 	@Override
 	public String GetPrimaryKey()
 	{
-		return PERSON_ID + ', ' + EDUCATION_ID;
+		return PERSON_ID + ", " + EDUCATION_ID;
 	}
 	
 	public static final String FK_PERSON = "fk_person";

@@ -35,13 +35,9 @@ public final class Anniversaries implements IContract
 		return ID;
 	}
 	
-	public static final String FK_TYPE = "fk_type";
-	public static final String FK_TYPE_TABLE = "anniversarytypes";
-	public static final String FK_TYPE_COL = "name";
-
 	@Override
 	public List<ForeignKey> GetForeignKeys()
 	{
-		return Arrays.asList(new ForeignKey(FK_TYPE, TYPE, FK_TYPE_TABLE, FK_TYPE_COL));
+		return Arrays.asList(new ForeignKey("fk_type", TYPE, AnniversaryTypes.TABLE_NAME, AnniversaryTypes.NAME));
 	}
 }

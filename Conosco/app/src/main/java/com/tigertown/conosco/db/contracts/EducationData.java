@@ -29,7 +29,7 @@ public final class EducationData implements IContract
 		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
 			Pair.create(SCHOOL_NAME, DataTypes.TEXT),
 			Pair.create(LOCATION, DataTypes.TEXT),
-			Pair.create(YEAR, DataTypes.INTEGER),
+			Pair.create(YEAR, DataTypes.INT),
 			Pair.create(DEGREE, DataTypes.TEXT),
 			Pair.create(MAJOR, DataTypes.TEXT),
 			Pair.create(NOTES, DataTypes.TEXT));
