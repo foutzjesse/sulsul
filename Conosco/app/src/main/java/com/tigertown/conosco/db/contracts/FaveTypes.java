@@ -3,7 +3,7 @@ import java.util.*;
 import android.util.*;
 import com.tigertown.conosco.global.*;
 
-public final class FaveTypes implements IContract
+public final class FaveTypes extends ContractBase implements IContract
 {
 	private FaveTypes() {}
 	

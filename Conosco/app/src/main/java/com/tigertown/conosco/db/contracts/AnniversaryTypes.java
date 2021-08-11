@@ -3,7 +3,7 @@ import java.util.*;
 import android.util.*;
 import com.tigertown.conosco.global.*;
 
-public final class AnniversaryTypes implements IContract
+public final class AnniversaryTypes extends ContractBase implements IContract
 {
 	private AnniversaryTypes() {}
 	

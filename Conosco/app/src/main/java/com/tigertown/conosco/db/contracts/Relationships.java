@@ -3,7 +3,7 @@ import java.util.*;
 import android.util.*;
 import com.tigertown.conosco.global.*;
 
-public final class Relationships implements IContract
+public final class Relationships extends ContractBase implements IContract
 {
 	private Relationships() {}
 	

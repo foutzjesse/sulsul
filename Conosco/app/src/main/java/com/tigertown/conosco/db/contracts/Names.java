@@ -3,7 +3,7 @@ import java.util.*;
 import android.util.*;
 import com.tigertown.conosco.global.*;
 
-public final class Names implements IContract
+public final class Names extends ContractBase implements IContract
 {
 	//cant instantiate it
 	private Names() {}

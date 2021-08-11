@@ -3,7 +3,7 @@ import java.util.*;
 import android.util.*;
 import com.tigertown.conosco.global.*;
 
-public final class Peeps implements IContract
+public final class Peeps extends ContractBase implements IContract
 {
 	//cant instantiate it
 	private Peeps() {}
