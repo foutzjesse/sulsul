@@ -5,25 +5,16 @@ import android.util.*;
 
 public abstract class ContractBase
 {
-
-	public abstract String GetName();
-
-	public abstract List<Pair<String, String>> GetColumns();
-
-	public abstract String GetPrimaryKey();
-
-	public abstract List<ForeignKey> GetForeignKeys();
-	
-	public String CreateTable() {
-		String result = "CREATE TABLE " + GetName() + " (";
+	public String CreateTable(String name, List<Pair<String, String>> columns, String pk, List<ForeignKey> fks) {
+		String result = "CREATE TABLE " + name + " (";
 		
-		for (Pair<String, String> c : GetColumns()) {
+		for (Pair<String, String> c : columns) {
 			result += (c.first + " " + c.second + ", ");
 		}
 		
-		result += ("PRIMARY KEY (" + GetPrimaryKey() + "), ");
+		result += ("PRIMARY KEY (" + pk + "), ");
 		
-		for (ForeignKey f : GetForeignKeys()) {
+		for (ForeignKey f : fks()) {
 			result += "CONSTRAINT " + f.name 
 				+ " FOREIGN KEY (" + f.columns + ") REFERENCES "
 				+ f.foreignTable + " (" + f.foreignColumns + "), ";
