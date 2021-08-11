@@ -3,19 +3,15 @@ import com.tigertown.conosco.global.*;
 import java.util.*;
 import android.util.*;
 
-public abstract class ContractBase implements IContract
+public abstract class ContractBase
 {
 
-	@Override
 	public abstract String GetName();
 
-	@Override
 	public abstract List<Pair<String, String>> GetColumns();
 
-	@Override
 	public abstract String GetPrimaryKey();
 
-	@Override
 	public abstract List<ForeignKey> GetForeignKeys();
 	
 	public String CreateTable() {

@@ -2,6 +2,7 @@ package com.tigertown.conosco.db.contracts;
 import java.util.*;
 import android.util.*;
 import com.tigertown.conosco.global.*;
+import com.tigertown.conosco.db.*;
 
 public final class Faves extends ContractBase implements IContract
 {

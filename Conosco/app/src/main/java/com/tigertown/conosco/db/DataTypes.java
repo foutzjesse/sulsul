@@ -1,4 +1,4 @@
-package com.tigertown.conosco.db.contracts;
+package com.tigertown.conosco.db;
 
 public final class DataTypes
 {

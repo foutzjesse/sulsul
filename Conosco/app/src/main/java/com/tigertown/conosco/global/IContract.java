@@ -8,4 +8,5 @@ public interface IContract
 	public List<Pair<String, String>> GetColumns();
 	public String GetPrimaryKey();
 	public List<ForeignKey> GetForeignKeys();
+	public String CreateTable();
 }

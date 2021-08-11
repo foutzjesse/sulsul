@@ -4,38 +4,38 @@ import android.util.*;
 import com.tigertown.conosco.global.*;
 import com.tigertown.conosco.db.*;
 
-public final class FavesPeeps extends ContractBase implements IContract
+public final class GroupsPeeps extends ContractBase implements IContract
 {
-	private FavesPeeps() {}
-	
-	public static final String TABLE_NAME = "favespeeps";
-	
+	private GroupsPeeps() {}
+
+	public static final String TABLE_NAME = "groupspeeps";
+
 	@Override
 	public String GetName()
 	{
 		return TABLE_NAME;
 	}
-	
+
 	public static final String PERSON_ID = "personid";
-	public static final String FAVE_ID = "faveid";
-	
+	public static final String GROUP = "group";
+
 	@Override
 	public List<Pair<String, String>> GetColumns()
 	{
 		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.GUID), //store id as X'123456789012...'
-			Pair.create(FAVE_ID, DataTypes.GUID));
+							 Pair.create(GROUP, DataTypes.GUID));
 	}
 
 	@Override
 	public String GetPrimaryKey()
 	{
-		return PERSON_ID + ", " + FAVE_ID;
+		return PERSON_ID + ", " + GROUP;
 	}
 
 	@Override
 	public List<ForeignKey> GetForeignKeys()
 	{
 		return Arrays.asList(new ForeignKey("fk_" + TABLE_NAME + PERSON_ID, PERSON_ID, Peeps.TABLE_NAME, Peeps.ID),
-							 new ForeignKey("fk_" + TABLE_NAME + FAVE_ID, FAVE_ID, Faves.TABLE_NAME, Faves.ID));
+							 new ForeignKey("fk_" + TABLE_NAME + GROUP, GROUP, Groups.TABLE_NAME, Groups.NAME));
 	}
 }
