@@ -3,10 +3,12 @@ import com.tigertown.conosco.global.*;
 import java.util.*;
 import android.util.*;
 
-public abstract class ContractBase
+public final class ContractHelper
 {
-	public String CreateTable(String name, List<Pair<String, String>> columns, String pk, List<ForeignKey> fks) {
-		String result = "CREATE TABLE " + name + " (";
+	private ContractHelper() {}
+	
+	public static final String CreateTable(String name, List<Pair<String, String>> columns, String pk, List<ForeignKey> fks) {
+		String result = "CREATE TABLE IF NOT EXISTS " + name + " (";
 		
 		for (Pair<String, String> c : columns) {
 			result += (c.first + " " + c.second + ", ");
@@ -14,7 +16,7 @@ public abstract class ContractBase
 		
 		result += ("PRIMARY KEY (" + pk + "), ");
 		
-		for (ForeignKey f : fks()) {
+		for (ForeignKey f : fks) {
 			result += "CONSTRAINT " + f.name 
 				+ " FOREIGN KEY (" + f.columns + ") REFERENCES "
 				+ f.foreignTable + " (" + f.foreignColumns + "), ";

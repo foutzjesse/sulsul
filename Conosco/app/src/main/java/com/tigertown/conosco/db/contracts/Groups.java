@@ -4,35 +4,29 @@ import java.util.*;
 import android.util.*;
 import com.tigertown.conosco.db.*;
 
-public final class Groups extends ContractBase implements IContract
+public final class Groups
 {
 	private Groups() {}
 
 	public static final String TABLE_NAME = "groups";
 
-	@Override
-	public String GetName()
-	{
-		return TABLE_NAME;
-	}
-
 	public static final String NAME = "name";
 
-	@Override
-	public List<Pair<String, String>> GetColumns()
+	public static List<Pair<String, String>> GetColumns()
 	{
 		return Arrays.asList(Pair.create(NAME, DataTypes.TEXT));
 	}
 
-	@Override
-	public String GetPrimaryKey()
+	public static String GetPrimaryKey()
 	{
 		return NAME;
 	}
 
-	@Override
-	public List<ForeignKey> GetForeignKeys()
+	public static List<ForeignKey> GetForeignKeys()
 	{
 		return new ArrayList<ForeignKey>();
 	}
+
+	public static final String CREATE_TABLE = 
+		ContractHelper.CreateTable(TABLE_NAME, GetColumns(), GetPrimaryKey(), GetForeignKeys());
 }

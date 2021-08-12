@@ -4,38 +4,32 @@ import android.util.*;
 import com.tigertown.conosco.global.*;
 import com.tigertown.conosco.db.*;
 
-public final class EducationPeeps extends ContractBase implements IContract
+public final class EducationPeeps
 {
 	private EducationPeeps() {}
 	
 	public static final String TABLE_NAME = "educationpeeps";
 	
-	@Override
-	public String GetName()
-	{
-		return TABLE_NAME;
-	}
-	
 	public static final String PERSON_ID = "personid";
 	public static final String EDUCATION_ID = "educationid";
 	
-	@Override
-	public List<Pair<String, String>> GetColumns()
+	public static List<Pair<String, String>> GetColumns()
 	{
 		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.GUID), //store id as X'123456789012...'
 			Pair.create(EDUCATION_ID, DataTypes.GUID));
 	}
 
-	@Override
-	public String GetPrimaryKey()
+	public static String GetPrimaryKey()
 	{
 		return PERSON_ID + ", " + EDUCATION_ID;
 	}
-	
-	@Override
-	public List<ForeignKey> GetForeignKeys()
+
+	public static List<ForeignKey> GetForeignKeys()
 	{
 		return Arrays.asList(new ForeignKey("fk_" + TABLE_NAME + PERSON_ID, PERSON_ID, Peeps.TABLE_NAME, Peeps.ID),
 							 new ForeignKey("fk_" + TABLE_NAME + EDUCATION_ID, EDUCATION_ID, EducationData.TABLE_NAME, EducationData.ID));
 	}
+
+	public static final String CREATE_TABLE = 
+		ContractHelper.CreateTable(TABLE_NAME, GetColumns(), GetPrimaryKey(), GetForeignKeys());
 }

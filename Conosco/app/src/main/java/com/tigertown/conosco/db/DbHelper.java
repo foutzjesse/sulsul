@@ -14,10 +14,16 @@ public class DbHelper extends SQLiteOpenHelper
 	
 	@Override
 	public void onCreate(SQLiteDatabase sqLiteDatabase) { 
-		//loop through IContract classes using reflection
-		IContract contract = null;
+		//cant use reflection due to foreign keys :-(
+		for (String s : InitialMigration.TABLES)
+			sqLiteDatabase.execSQL(s);
+			
+		//seed domain tables
+		sqLiteDatabase.execSQL(InitialMigration.ANNIVERSARYTYPES);
+		sqLiteDatabase.execSQL(InitialMigration.RELATIONSHIPTYPES);
+		sqLiteDatabase.execSQL(InitialMigration.FAVETYPES);
 		
-		sqLiteDatabase.execSQL(contract.CreateTable()); 
+		//TODO encrypt
 	} 
 	
 	@Override 

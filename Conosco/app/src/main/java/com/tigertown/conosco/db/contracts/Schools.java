@@ -4,17 +4,11 @@ import android.util.*;
 import com.tigertown.conosco.global.*;
 import com.tigertown.conosco.db.*;
 
-public final class Schools extends ContractBase implements IContract
+public final class Schools
 {
 	private Schools() {}
 
 	public static final String TABLE_NAME = "schools";
-
-	@Override
-	public String GetName()
-	{
-		return TABLE_NAME;
-	}
 
 	public static final String ID = "id";
   	public static final String NAME = "name";
@@ -22,8 +16,7 @@ public final class Schools extends ContractBase implements IContract
 	public static final String MASCOT = "mascot";
 	public static final String COLORS = "colors";
 
-	@Override
-	public List<Pair<String, String>> GetColumns()
+	public static List<Pair<String, String>> GetColumns()
 	{
 		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
 							 Pair.create(NAME, DataTypes.TEXT),
@@ -32,15 +25,16 @@ public final class Schools extends ContractBase implements IContract
 							 Pair.create(COLORS, DataTypes.TEXT));
 	}
 
-	@Override
-	public String GetPrimaryKey()
+	public static String GetPrimaryKey()
 	{
 		return ID;
 	}
 
-	@Override
-	public List<ForeignKey> GetForeignKeys()
+	public static List<ForeignKey> GetForeignKeys()
 	{
 		return new ArrayList<ForeignKey>();
 	}
+
+	public static final String CREATE_TABLE = 
+		ContractHelper.CreateTable(TABLE_NAME, GetColumns(), GetPrimaryKey(), GetForeignKeys());
 }

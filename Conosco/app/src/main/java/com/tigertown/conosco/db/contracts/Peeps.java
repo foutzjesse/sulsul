@@ -4,36 +4,47 @@ import android.util.*;
 import com.tigertown.conosco.global.*;
 import com.tigertown.conosco.db.*;
 
-public final class Peeps extends ContractBase implements IContract
+public final class Peeps
 {
 	//cant instantiate it
 	private Peeps() {}
 	
 	public static final String TABLE_NAME = "peeps";
 	
-	@Override
-	public String GetName()
-	{
-		return TABLE_NAME;
-	}
-	
 	public static final String ID = "id";
+	public static final String HOW_MET = "howmet";
+	public static final String HOMETOWN = "hometown";
+	public static final String RESIDENCE = "residence";
+	public static final String JOB = "job";
+	public static final String IMAGE = "image";
+	public static final String INTERESTS = "interests";
+	public static final String NOTES = "notes";
+	//public static final String GENDER = "gender";
 	
-	@Override
-	public List<Pair<String, String>> GetColumns()
+	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(ID, DataTypes.GUID)); //store id as X'123456789012...'
+		return Arrays.asList(Pair.create(ID, DataTypes.GUID),
+			Pair.create(HOW_MET, DataTypes.TEXT),
+							 Pair.create(HOMETOWN, DataTypes.TEXT),
+							 Pair.create(RESIDENCE, DataTypes.TEXT),
+							 Pair.create(JOB, DataTypes.TEXT),
+							 Pair.create(IMAGE, DataTypes.TEXT),
+							 Pair.create(INTERESTS, DataTypes.TEXT),
+							 Pair.create(NOTES, DataTypes.TEXT)//,
+							 //Pair.create(GENDER, DataTypes.TEXT)
+							 ); //store id as X'123456789012...'
 	}
 
-	@Override
-	public String GetPrimaryKey()
+	public static String GetPrimaryKey()
 	{
 		return ID;
 	}
 	
-	@Override
-	public List<ForeignKey> GetForeignKeys()
+	public static List<ForeignKey> GetForeignKeys()
 	{
 		return new ArrayList<ForeignKey>();
 	}
+
+	public static final String CREATE_TABLE = 
+		ContractHelper.CreateTable(TABLE_NAME, GetColumns(), GetPrimaryKey(), GetForeignKeys());
 }
