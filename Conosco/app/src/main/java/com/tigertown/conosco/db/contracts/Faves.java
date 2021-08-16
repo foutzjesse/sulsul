@@ -16,14 +16,14 @@ public final class Faves
 	
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
+		return Arrays.asList(Pair.create(ID, DataTypes.INTPK),
 			Pair.create(TYPE, DataTypes.TEXT),
 			Pair.create(VALUE, DataTypes.TEXT));
 	}
 
 	public static String GetPrimaryKey()
 	{
-		return ID;
+		return "";
 	}
   
 	public static List<ForeignKey> GetForeignKeys()

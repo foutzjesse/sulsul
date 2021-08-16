@@ -23,7 +23,7 @@ public final class Peeps
 	
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(ID, DataTypes.GUID),
+		return Arrays.asList(Pair.create(ID, DataTypes.INTPK),
 			Pair.create(HOW_MET, DataTypes.TEXT),
 							 Pair.create(HOMETOWN, DataTypes.TEXT),
 							 Pair.create(RESIDENCE, DataTypes.TEXT),
@@ -32,12 +32,12 @@ public final class Peeps
 							 Pair.create(INTERESTS, DataTypes.TEXT),
 							 Pair.create(NOTES, DataTypes.TEXT)//,
 							 //Pair.create(GENDER, DataTypes.TEXT)
-							 ); //store id as X'123456789012...'
+							 );
 	}
 
 	public static String GetPrimaryKey()
 	{
-		return ID;
+		return "";
 	}
 	
 	public static List<ForeignKey> GetForeignKeys()

@@ -19,7 +19,7 @@ public final class Traits
 	
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
+		return Arrays.asList(Pair.create(ID, DataTypes.INTPK), //store id as X'123456789012...'
 			Pair.create(NAME, DataTypes.TEXT),
 			Pair.create(ICON, DataTypes.TEXT),
 			Pair.create(GROUPING, DataTypes.TEXT),
@@ -29,7 +29,7 @@ public final class Traits
 
 	public static String GetPrimaryKey()
 	{
-		return ID;
+		return "";
 	}
 	
 	public static List<ForeignKey> GetForeignKeys()

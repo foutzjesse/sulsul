@@ -19,8 +19,8 @@ public final class EducationData
 	
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
-			Pair.create(SCHOOL_ID, DataTypes.GUID),
+		return Arrays.asList(Pair.create(ID, DataTypes.INTPK),
+			Pair.create(SCHOOL_ID, DataTypes.INT),
 			Pair.create(YEAR, DataTypes.INT),
 			Pair.create(DEGREE, DataTypes.TEXT),
 			Pair.create(MAJOR, DataTypes.TEXT),
@@ -29,7 +29,7 @@ public final class EducationData
 
 	public static String GetPrimaryKey()
 	{
-		return ID;
+		return "";
 	}
 	
 	public static List<ForeignKey> GetForeignKeys()

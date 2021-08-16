@@ -9,4 +9,5 @@ public final class DataTypes
 	public static final String DATE = "TEXT";
 	public static final String INT = "INTEGER";
 	public static final String BOOL = "INTEGER";
+	public static final String INTPK = "INTEGER PRIMARY KEY";
 }

@@ -15,8 +15,8 @@ public final class FavesPeeps
 	
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.GUID), //store id as X'123456789012...'
-			Pair.create(FAVE_ID, DataTypes.GUID));
+		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.INT),
+			Pair.create(FAVE_ID, DataTypes.INT));
 	}
 
 	public static String GetPrimaryKey()

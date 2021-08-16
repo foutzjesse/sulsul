@@ -14,7 +14,9 @@ public final class ContractHelper
 			result += (c.first + " " + c.second + ", ");
 		}
 		
-		result += ("PRIMARY KEY (" + pk + "), ");
+		if (pk != "") {
+			result += ("PRIMARY KEY (" + pk + "), ");
+		}
 		
 		for (ForeignKey f : fks) {
 			result += "CONSTRAINT " + f.name 
@@ -23,7 +25,7 @@ public final class ContractHelper
 		}
 	
 		if (result.endsWith(", ")) {
-			result = result.substring(0, result.length() - 3);
+			result = result.substring(0, result.length() - 2);
 		}
 		
 		result += ")";

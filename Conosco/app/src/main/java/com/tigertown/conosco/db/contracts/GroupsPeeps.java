@@ -11,12 +11,12 @@ public final class GroupsPeeps
 	public static final String TABLE_NAME = "groupspeeps";
 
 	public static final String PERSON_ID = "personid";
-	public static final String GROUP = "group";
+	public static final String GROUP = "groupid";
 
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.GUID), //store id as X'123456789012...'
-							 Pair.create(GROUP, DataTypes.GUID));
+		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.INT), //store id as X'123456789012...'
+							 Pair.create(GROUP, DataTypes.INT));
 	}
 
 	public static String GetPrimaryKey()

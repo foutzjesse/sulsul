@@ -15,7 +15,7 @@ public final class GiftIdeas
   	
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
+		return Arrays.asList(Pair.create(ID, DataTypes.INT), //store id as X'123456789012...'
 							 Pair.create(VALUE, DataTypes.TEXT));
 	}
 

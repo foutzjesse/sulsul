@@ -16,9 +16,9 @@ public final class Relationships
 	
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.GUID),
+		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.INT),
 			Pair.create(TYPE, DataTypes.TEXT),
-			Pair.create(NAME_ID, DataTypes.GUID));
+			Pair.create(NAME_ID, DataTypes.INT));
 	}
 
 	public static String GetPrimaryKey()

@@ -15,7 +15,7 @@ public final class AnniversariesPeeps
 	
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.GUID), //store id as X"123456789012..."
+		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.INT), //store id as X"123456789012..."
 			Pair.create(ANNIVERSARY_ID, DataTypes.GUID));
 	}
 

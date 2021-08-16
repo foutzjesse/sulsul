@@ -17,7 +17,7 @@ public final class Anniversaries
 
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
+		return Arrays.asList(Pair.create(ID, DataTypes.INTPK),
 			Pair.create(TYPE, DataTypes.TEXT),
 			Pair.create(DATE, DataTypes.DATE),
 			Pair.create(NOTIFY, DataTypes.BOOL));
@@ -25,7 +25,7 @@ public final class Anniversaries
 
 	public static String GetPrimaryKey()
 	{
-		return ID;
+		return "";
 	}
 	
 	public static List<ForeignKey> GetForeignKeys()

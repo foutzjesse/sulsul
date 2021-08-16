@@ -21,18 +21,18 @@ public final class Names
 	
 	public static List<Pair<String, String>> GetColumns()
 	{
-		return Arrays.asList(Pair.create(ID, DataTypes.GUID), //store id as X'123456789012...'
+		return Arrays.asList(Pair.create(ID, DataTypes.INTPK),
 			Pair.create(FN, DataTypes.TEXT),
 			Pair.create(LN, DataTypes.TEXT),
 			Pair.create(MN, DataTypes.TEXT),
 			Pair.create(PHONETIC, DataTypes.TEXT),
 			Pair.create(NICKNAME, DataTypes.TEXT),
-			Pair.create(DISPLAY, DataTypes.TEXT + " DEFAULT FN || ' ' || LN"));
+			Pair.create(DISPLAY, DataTypes.TEXT));
 	}
 	
 	public static String GetPrimaryKey()
 	{
-		return ID;
+		return "";
 	}
 	
 	public static List<ForeignKey> GetForeignKeys()
