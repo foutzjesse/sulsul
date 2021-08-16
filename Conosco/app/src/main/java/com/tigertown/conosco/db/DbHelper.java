@@ -15,9 +15,7 @@ public class DbHelper extends SQLiteOpenHelper
 	} 
 	
 	@Override
-	public void onCreate(SQLiteDatabase sqLiteDatabase) { 
-		System.out.println("create db");
-	
+	public void onCreate(SQLiteDatabase sqLiteDatabase) {
 		//cant use reflection due to foreign keys :-(
 		for (String s : InitialMigration.TABLES)
 			sqLiteDatabase.execSQL(s);
