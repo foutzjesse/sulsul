@@ -16,7 +16,7 @@ public final class GroupsPeeps
 	public static List<Pair<String, String>> GetColumns()
 	{
 		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.INT), //store id as X'123456789012...'
-							 Pair.create(GROUP, DataTypes.INT));
+							 Pair.create(GROUP, DataTypes.TEXT));
 	}
 
 	public static String GetPrimaryKey()
