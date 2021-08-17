@@ -5,7 +5,7 @@ public class GiftIdea {
     public String value;
 
     public GiftIdea(int p, String v) {
-        this.id = p;
+        this.personid = p;
         this.value = v;
     }
 }

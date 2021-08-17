@@ -17,6 +17,8 @@ import com.tigertown.conosco.db.io.*;
 
 public class MainActivity extends Activity //implements AdapterView.OnItemSelectedListener
 {
+	AnniversaryTypesIoClient atioc = new AnniversaryTypesIoClient();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -24,12 +26,9 @@ public class MainActivity extends Activity //implements AdapterView.OnItemSelect
 		Singletons.dbHelper = new DbHelper(this);
 		setContentView(R.layout.main);
 		
-		AnniversaryTypesIoClient atioc = new AnniversaryTypesIoClient();
-		List<String> strings = atioc.read(); //Singletons.dbHelper.read(AnniversaryTypes.TABLE_NAME);
+		List<String> strings = atioc.read();
 		 
 		TextView textThing = (TextView)findViewById(R.id.textThing);
 		textThing.setText(strings.get(0));
-		
-		
 	}
 }

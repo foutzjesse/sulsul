@@ -1,10 +1,10 @@
 package com.tigertown.conosco.global.data;
 
-public class PersonFave {
+public class PersonGroup {
     public int personid;
     public String group;
 
-    public PersonFave(int p, String g) {
+    public PersonGroup(int p, String g) {
         this.personid = p;
         this.group = g;
     }

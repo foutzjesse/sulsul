@@ -6,6 +6,6 @@ public class PersonFave {
 
     public PersonFave(int p, int f) {
         this.personid = p;
-        this.faveid = e;
+        this.faveid = f;
     }
 }

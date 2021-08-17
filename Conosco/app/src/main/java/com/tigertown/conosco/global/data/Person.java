@@ -1,6 +1,6 @@
 package com.tigertown.conosco.global.data;
 
-public class Name {
+public class Person {
     public Integer id;
     public String howmet;
     public String hometown;
@@ -10,18 +10,18 @@ public class Name {
     public String interests;
     public String notes;
 
-    public Name(Integer i, String h, String ht, String r, String j, String im, String i, String n) {
+    public Person(Integer i, String h, String ht, String r, String j, String im, String in, String n) {
         this.id = i;
         this.howmet = h;
         this.hometown = ht;
         this.residence = r;
         this.job = j;
         this.imagefile = im;
-        this.interests = i;
+        this.interests = in;
         this.notes = n;
     }
 
-    public Name(String h, String ht, String r, String j, String im, String i, String n) {
+    public Person(String h, String ht, String r, String j, String im, String i, String n) {
         this(null, h, ht, r, j, im, i, n);
     }
 }

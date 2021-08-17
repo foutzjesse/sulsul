@@ -1,4 +1,5 @@
 package com.tigertown.conosco.global.data;
+import java.time.*;
 
 public class Anniversary {
     public Integer id;
@@ -14,6 +15,6 @@ public class Anniversary {
     }
 
     public Anniversary (String t, String d, int n) {
-        this(null, t, d, n)
+        this(null, t, d, n);
     }
 }
