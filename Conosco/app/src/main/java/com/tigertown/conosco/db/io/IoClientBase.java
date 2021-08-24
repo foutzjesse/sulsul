@@ -8,24 +8,29 @@ import com.tigertown.conosco.global.*;
 
 public abstract class IoClientBase<T>
 {
-	public void insertSingle(String table, String column, String label) {
+	private String table;
+	
+	public IoClientBase(String t) {
+		this.table = t;
+	}
+	
+	public void insertSingle(String column, String value) {
         SQLiteDatabase db = Singletons.dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(column, label);
+        values.put(column, value);
 
         db.insert(table, null, values);
         db.close();
     }
 
-    public List<T> read(String table)
+    public List<T> read()
 	{
 		List<T> list = new ArrayList<T>();
 
 		String selectQuery = "SELECT * FROM " + table;
 
 		SQLiteDatabase db = Singletons.dbHelper.getReadableDatabase();
-
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
 		if(cursor.moveToFirst()){

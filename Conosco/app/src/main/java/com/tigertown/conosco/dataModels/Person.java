@@ -1,4 +1,4 @@
-package com.tigertown.conosco.global.data;
+package com.tigertown.conosco.dataModels;
 
 public class Person {
     public Integer id;

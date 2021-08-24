@@ -6,6 +6,9 @@ import android.database.*;
 
 public abstract class SingleColumnIoClient extends IoClientBase<String>
 {
+	public SingleColumnIoClient(String t) {
+		super(t);
+	}
 
 	@Override
 	public String convertRow(Cursor c) {

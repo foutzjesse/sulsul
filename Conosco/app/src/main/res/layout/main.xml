@@ -1,12 +1,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+	android:orientation="vertical">
 
-    <TextView
+    <EditText
 		android:id="@+id/textThing"
-        android:text="@string/hello_world"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content" 
+		android:inputType="text"/>
+	<Spinner android:id="@+id/spinna"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAdd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18sp" />
+	<CheckBox
+		android:id="@+id/chequebox"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:text="Get notifications"
+		android:layout_marginTop="16dp"
+		android:textSize="18sp"/>
+	<Button
+		android:id="@+id/botan"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:text="Save"
+		/>
 </LinearLayout>

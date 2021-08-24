@@ -4,7 +4,11 @@ import com.tigertown.conosco.db.contracts.*;
 
 public class AnniversaryTypesIoClient extends SingleColumnIoClient
 {
-	public List<String> read() {
-		return super.read(AnniversaryTypes.TABLE_NAME);
+	public AnniversaryTypesIoClient() {
+		super(AnniversaryTypes.TABLE_NAME);
 	}
+	
+	//public List<String> read() {
+	//	return super.read(AnniversaryTypes.TABLE_NAME);
+	//}
 }
