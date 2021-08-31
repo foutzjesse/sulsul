@@ -5,6 +5,8 @@ import android.content.*;
 import java.util.*;
 import android.database.*;
 import com.tigertown.conosco.global.*;
+import android.util.*;
+import java.time.*;
 
 public abstract class IoClientBase<T>
 {
@@ -14,11 +16,16 @@ public abstract class IoClientBase<T>
 		this.table = t;
 	}
 	
-	public void insertSingle(String column, String value) {
+	public void insertSingle(HashMap<String, String> data) {
         SQLiteDatabase db = Singletons.dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(column, value);
+		Iterator iterator = data.entrySet().iterator();
+		
+		while (iterator.hasNext()) {
+			Map.Entry datum = (Map.Entry)iterator.next();
+			values.put((String)datum.getKey(), (String)datum.getValue());
+		}
 
         db.insert(table, null, values);
         db.close();
@@ -46,4 +53,24 @@ public abstract class IoClientBase<T>
 	}
 	
 	public abstract T convertRow(Cursor c);
+	
+	public String sqlize(String s) {
+		return "'" + s + "'";
+	}
+	
+	public String sqlize (LocalDate d) {
+		return d.toString();
+	}
+	
+	public String sqlize(Integer i) {
+		return i.toString();
+	}
+	
+	public String sqlize(Boolean b) {
+		if (b) {
+			return "1";
+		}
+		
+		return "0";
+	}
 }

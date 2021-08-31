@@ -29,6 +29,8 @@ public class MainActivity extends Activity implements IView<IAnniversary> //remo
 	CheckBox checkBox;
 	Button button;
 	AlertDialog.Builder builder1;
+	TextView idThing;
+	Integer id = 1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -45,8 +47,9 @@ public class MainActivity extends Activity implements IView<IAnniversary> //remo
 		button = (Button)findViewById(R.id.botan);
 		button.setOnClickListener(getClickListener());
 		builder1 = new AlertDialog.Builder(this);
+		idThing = (TextView)findViewById(R.id.idThing);
 		
-		presenter.loadData();
+		presenter.loadData(id);
 	}
 	
 	private void loadSpinner() {
@@ -63,9 +66,10 @@ public class MainActivity extends Activity implements IView<IAnniversary> //remo
 			public void onClick(View v) {
 				try{
 					presenter.update(spinner.getSelectedItem().toString(), textThing.getText().toString(), checkBox.isChecked());
+					presenter.save();
 				}
 				catch (Exception e) {
-					builder1.setMessage("Write your message here.");
+					builder1.setMessage(e.getMessage() + e.getClass());
 					builder1.setCancelable(true); 
 					builder1.setPositiveButton( "Yes", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
 					builder1.setNegativeButton( "No", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
@@ -79,6 +83,12 @@ public class MainActivity extends Activity implements IView<IAnniversary> //remo
 	private void setSpinner(String value) {
 		if (value != null) {
 			int pos = adapter.getPosition(value);
+			builder1.setMessage(value + pos);
+			builder1.setCancelable(true); 
+			builder1.setPositiveButton( "Yes", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
+			builder1.setNegativeButton( "No", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
+			AlertDialog alert11 = builder1.create(); 
+			alert11.show();
 			spinner.setSelection(pos);
 		}
 	}
@@ -88,12 +98,11 @@ public class MainActivity extends Activity implements IView<IAnniversary> //remo
 		textThing.setText(data.getDate().toString());
 		this.setSpinner(data.getType());
 		checkBox.setChecked(data.getNotify());
-	}
-
-	@Override
-	public void update(IAnniversary data)
-	{
-		load(data);
+		String poop = presenter.getOneId();
+		if (poop == null)
+			poop = "null";
+		
+		idThing.setText(poop);
 	}
 	
 	public void save() {

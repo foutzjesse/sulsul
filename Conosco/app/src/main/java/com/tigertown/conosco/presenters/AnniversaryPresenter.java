@@ -11,15 +11,20 @@ public class AnniversaryPresenter
 	private Anniversary record;
 	private IView<IAnniversary> view;
 	private AnniversaryTypesIoClient atioc = new AnniversaryTypesIoClient();
+	private AnniversaryIoClient ioClient = new AnniversaryIoClient();
 	
 	public AnniversaryPresenter(IView<IAnniversary> v) {
 		this.view = v;
-		record = new Anniversary("Wedding", "2013-05-04");
 	}
 	
 	
 	public void loadData() {
 		view.load(record);
+	}
+	
+	public void loadData(Integer id) {
+		record = ioClient.read(id);
+		loadData();
 	}
 	
 	public List<String> getAnniversaryTypes() {
@@ -47,5 +52,13 @@ public class AnniversaryPresenter
 	public void updateNotify(Boolean n) {
 		record.setNotify(n);
 		//view.update(record.toString());
+	}
+	
+	public void save() {
+		ioClient.upsertSingle(record);
+	}
+	
+	public String getOneId() {
+		return ioClient.getFirstId();
 	}
 }
