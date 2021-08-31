@@ -34,7 +34,7 @@ public class AnniversaryIoClient extends IdBasedIoClient<Anniversary>
 		
 		processId(result, record.getId());
 		
-		result.put(Anniversaries.TYPE, sqlize(record.getType()));
+		result.put(Anniversaries.TYPE, record.getType());
 		result.put(Anniversaries.DATE, sqlize(record.getDate()));
 		result.put(Anniversaries.NOTIFY, sqlize(record.getNotify()));
 		

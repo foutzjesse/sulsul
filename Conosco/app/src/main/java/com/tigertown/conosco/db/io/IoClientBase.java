@@ -54,10 +54,6 @@ public abstract class IoClientBase<T>
 	
 	public abstract T convertRow(Cursor c);
 	
-	public String sqlize(String s) {
-		return "'" + s + "'";
-	}
-	
 	public String sqlize (LocalDate d) {
 		return d.toString();
 	}

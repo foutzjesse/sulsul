@@ -24,7 +24,7 @@ public class AnniversaryPresenter
 	
 	public void loadData(Integer id) {
 		record = ioClient.read(id);
-		loadData();
+		this.loadData();
 	}
 	
 	public List<String> getAnniversaryTypes() {

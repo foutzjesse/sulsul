@@ -83,7 +83,7 @@ public class MainActivity extends Activity implements IView<IAnniversary> //remo
 	private void setSpinner(String value) {
 		if (value != null) {
 			int pos = adapter.getPosition(value);
-			builder1.setMessage(value + pos);
+			builder1.setMessage(value + adapter.getCount() + pos);
 			builder1.setCancelable(true); 
 			builder1.setPositiveButton( "Yes", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
 			builder1.setNegativeButton( "No", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
@@ -96,6 +96,7 @@ public class MainActivity extends Activity implements IView<IAnniversary> //remo
 	@Override
 	public void load(IAnniversary data) {
 		textThing.setText(data.getDate().toString());
+		this.loadSpinner();
 		this.setSpinner(data.getType());
 		checkBox.setChecked(data.getNotify());
 		String poop = presenter.getOneId();
