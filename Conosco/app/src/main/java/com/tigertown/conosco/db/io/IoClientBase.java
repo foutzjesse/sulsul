@@ -46,9 +46,7 @@ public abstract class IoClientBase<T>
 	
 	public void deleteSingle(HashMap<String, String> data) {
 		SQLiteDatabase db = Singletons.dbHelper.getWritableDatabase();
-
 		db.delete(table, getUpdateWhereClause(), getUpdateWhereClauseValues(data));
-
 		db.close();
 	}
 	

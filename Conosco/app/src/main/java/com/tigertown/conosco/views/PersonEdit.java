@@ -89,7 +89,7 @@ public class PersonEdit extends Activity implements IView<IPerson>
 		//giftIdeas.setOnItemClickListener(getEditGiftIdeaListener());
 	}
 	
-	private <T extends ArrayAdapter> void loadListView(ListView list, T adapter, OnClickListener listener) {
+	private <T extends ArrayAdapter> void loadListView(ListView list, T adapter, OnItemClickListener listener) {
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(listener);
 	}

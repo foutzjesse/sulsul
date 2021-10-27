@@ -56,7 +56,7 @@ public class GiftIdeaIoClient extends IoClientBase<IGiftIdea>
 		if (oldValue == null)
 			insertSingle(record);
 		else {
-			deleteSingle((HashMap<String, String>)Map.of(GiftIdeas.ID, String.valueOf(record.getPersonid()), GiftIdeas.VALUE, oldValue));
+			deleteSingle(new HashMap<String, String>(Map.of(GiftIdeas.ID, String.valueOf(record.getPersonid()), GiftIdeas.VALUE, oldValue)));
 			insertSingle(record);
 		}
 	}

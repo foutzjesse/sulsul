@@ -21,6 +21,7 @@ public class GiftIdeaEdit extends Activity implements IView<IGiftIdea> //remove 
 	AlertDialog.Builder builder1;
 	int personId;
 	String oldValue;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
