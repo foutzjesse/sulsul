@@ -1,5 +1,6 @@
 package com.tigertown.conosco.global.modelInterfaces;
 import java.time.*;
+import java.util.*;
 
 public interface IAnniversary
 {

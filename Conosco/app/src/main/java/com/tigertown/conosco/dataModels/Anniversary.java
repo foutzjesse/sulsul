@@ -3,6 +3,7 @@ import java.time.*;
 import android.widget.*;
 import android.app.*;
 import com.tigertown.conosco.global.modelInterfaces.*;
+import java.util.*;
 
 public class Anniversary implements IAnniversary {
     private Integer id;
@@ -13,11 +14,15 @@ public class Anniversary implements IAnniversary {
     public Anniversary(Integer i, String t, String d, int n) {
         this.id = i;
         this.type = t;
-        this.date = LocalDate.parse(d); //turn d into CharSequence?
-        this.notify = (n == 1);
+		
+        this.date = (d != null && d != "") ? LocalDate.parse(d) : null;
+		
+		this.notify = (n == 1);
     }
 	
-	public Anniversary() {}
+	public Anniversary() {
+		this("", "");
+	}
 
     public Anniversary (String t, String d, int n) {
         this(null, t, d, n);
@@ -46,9 +51,7 @@ public class Anniversary implements IAnniversary {
 	}
 	
 	public void setDate(LocalDate d) {
-		if (this.date != d) {
-			this.date = d;
-		}
+		this.date = d;
 	}
 	
 	public Boolean getNotify() {

@@ -6,25 +6,24 @@ import com.tigertown.conosco.global.modelInterfaces.*;
 import com.tigertown.conosco.db.io.*;
 import java.util.*;
 
-public class AnniversaryPresenter
+public class AnniversaryPresenter extends PresenterBase<IAnniversary>
 {
-	private Anniversary record;
-	private IView<IAnniversary> view;
 	private AnniversaryTypesIoClient atioc = new AnniversaryTypesIoClient();
 	private AnniversaryIoClient ioClient = new AnniversaryIoClient();
+	private int personId;
 	
-	public AnniversaryPresenter(IView<IAnniversary> v) {
-		this.view = v;
-	}
-	
-	
-	public void loadData() {
-		view.load(record);
+	public AnniversaryPresenter(IView<IAnniversary> v, int pid) {
+		super(v);
+		personId = pid;
 	}
 	
 	public void loadData(Integer id) {
-		record = ioClient.read(id);
-		this.loadData();
+		if (id != null)
+			record = ioClient.read(id);
+		else
+			record = new Anniversary();
+			
+		this.presentData();
 	}
 	
 	public List<String> getAnniversaryTypes() {
@@ -39,26 +38,19 @@ public class AnniversaryPresenter
 	
 	public void updateType (String t) {
 		record.setType(t);
-		//view.update(record.toString());
 	}
 	
 	public void updateDate(String d) {
 		//TODO add error handling
 		LocalDate ld = LocalDate.parse(d);
 		record.setDate(ld);
-		//view.update(record.toString());
 	}
 	
 	public void updateNotify(Boolean n) {
 		record.setNotify(n);
-		//view.update(record.toString());
 	}
 	
 	public void save() {
-		ioClient.upsertSingle(record);
-	}
-	
-	public String getOneId() {
-		return ioClient.getFirstId();
+		ioClient.upsertSingle(personId, record);
 	}
 }

@@ -1,6 +1,7 @@
 package com.tigertown.conosco.dataModels;
+import com.tigertown.conosco.global.modelInterfaces.*;
 
-public class PersonAnniversary {
+public class PersonAnniversary implements IPersonJoinRecord {
     public int personid;
     public int anniversaryid;
 

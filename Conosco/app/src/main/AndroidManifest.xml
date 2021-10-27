@@ -17,7 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name=".WindowTest"></activity>
+		<activity
+			android:name=".views.PersonEdit"
+			android:label="@string/app_name"></activity>
+		<activity
+			android:name=".views.AnniversaryEdit"
+			android:label="@string/app_name"></activity>
+		<activity
+			android:name=".views.GiftIdeaEdit"
+			android:label="@string/app_name"></activity>
+		<activity android:name="WindowTest"></activity>
     </application>
-
 </manifest>

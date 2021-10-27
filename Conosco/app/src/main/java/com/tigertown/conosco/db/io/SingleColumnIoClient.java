@@ -21,4 +21,18 @@ public abstract class SingleColumnIoClient extends IoClientBase<String>
 		data.put(column, value);
 		super.insertSingle(data);
 	}
+
+	@Override
+	public String getUpdateWhereClause()
+	{
+		return null;
+		//throw new Exception("UPDATE is invalid for this object.");
+	}
+
+	@Override
+	public String[] getUpdateWhereClauseValues(HashMap<String, String> data)
+	{
+		// TODO: Implement this method
+		return null;
+	}
 }

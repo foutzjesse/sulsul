@@ -44,6 +44,14 @@ public class DbHelper extends SQLiteOpenHelper
         db.insert(table, null, values);
         db.close();
     }
+	
+	public void AdHocDevPowersGo() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		
+		db.execSQL("ALTER TABLE peeps ADD COLUMN name TEXT");
+		
+		db.close();
+	}
 
     public List<String> read(String table){
         List<String> list = new ArrayList<String>();

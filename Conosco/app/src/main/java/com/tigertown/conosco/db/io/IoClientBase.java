@@ -1,12 +1,10 @@
 package com.tigertown.conosco.db.io;
-import android.database.sqlite.*;
-import com.tigertown.conosco.db.*;
 import android.content.*;
-import java.util.*;
 import android.database.*;
+import android.database.sqlite.*;
 import com.tigertown.conosco.global.*;
-import android.util.*;
 import java.time.*;
+import java.util.*;
 
 public abstract class IoClientBase<T>
 {
@@ -30,6 +28,33 @@ public abstract class IoClientBase<T>
         db.insert(table, null, values);
         db.close();
     }
+	
+	public void updateSingle(HashMap<String, String> data) {
+		SQLiteDatabase db = Singletons.dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+		Iterator iterator = data.entrySet().iterator();
+
+		while (iterator.hasNext()) {
+			Map.Entry datum = (Map.Entry)iterator.next();
+			values.put((String)datum.getKey(), (String)datum.getValue());
+		}
+
+		db.update(table, values, getUpdateWhereClause(), getUpdateWhereClauseValues(data));
+
+		db.close();
+	}
+	
+	public void deleteSingle(HashMap<String, String> data) {
+		SQLiteDatabase db = Singletons.dbHelper.getWritableDatabase();
+
+		db.delete(table, getUpdateWhereClause(), getUpdateWhereClauseValues(data));
+
+		db.close();
+	}
+	
+	public abstract String getUpdateWhereClause();
+	
+	public abstract String[] getUpdateWhereClauseValues(HashMap<String, String> data);
 
     public List<T> read()
 	{
@@ -68,5 +93,13 @@ public abstract class IoClientBase<T>
 		}
 		
 		return "0";
+	}
+	
+	public Integer getInt(Cursor c, String key) {
+		return c.getInt(c.getColumnIndex(key));
+	}
+	
+	public String getString(Cursor c, String key) {
+		return c.getString(c.getColumnIndex(key));
 	}
 }

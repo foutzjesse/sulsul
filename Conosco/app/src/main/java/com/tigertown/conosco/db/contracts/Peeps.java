@@ -12,6 +12,7 @@ public final class Peeps
 	public static final String TABLE_NAME = "peeps";
 	
 	public static final String ID = "id";
+	public static final String NAME = "name";
 	public static final String HOW_MET = "howmet";
 	public static final String HOMETOWN = "hometown";
 	public static final String RESIDENCE = "residence";
@@ -24,6 +25,7 @@ public final class Peeps
 	public static List<Pair<String, String>> GetColumns()
 	{
 		return Arrays.asList(Pair.create(ID, DataTypes.INTPK),
+			Pair.create(NAME, DataTypes.TEXT),
 			Pair.create(HOW_MET, DataTypes.TEXT),
 							 Pair.create(HOMETOWN, DataTypes.TEXT),
 							 Pair.create(RESIDENCE, DataTypes.TEXT),
