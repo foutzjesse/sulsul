@@ -77,14 +77,23 @@ public class PersonEdit extends Activity implements IView<IPerson>
 		interests.setText(data.getInterests());
 		notes.setText(data.getNotes());
 		
-		AnniversaryAdapter anniversaryAdapter = new AnniversaryAdapter(this, data.getAnniversaries());
-		anniversaries.setAdapter(anniversaryAdapter);
-		anniversaries.setOnItemClickListener(getEditAnniversaryListener());
+		loadListView(anniversaries, new AnniversaryAdapter(this, data.getAnniversaries()), getEditAnniversaryListener());
+		loadListView(giftIdeas, new GiftIdeaAdapter(this, data.getGiftIdeas()), getEditGiftIdeaListener());
 		
-		GiftIdeaAdapter giftAdapter = new GiftIdeaAdapter(this, data.getGiftIdeas());
-		giftIdeas.setAdapter(giftAdapter);
-		giftIdeas.setOnItemClickListener(getEditGiftIdeaListener());
+		//AnniversaryAdapter anniversaryAdapter = new AnniversaryAdapter(this, data.getAnniversaries());
+		//anniversaries.setAdapter(anniversaryAdapter);
+		//anniversaries.setOnItemClickListener(getEditAnniversaryListener());
+		
+		//GiftIdeaAdapter giftAdapter = new GiftIdeaAdapter(this, data.getGiftIdeas());
+		//giftIdeas.setAdapter(giftAdapter);
+		//giftIdeas.setOnItemClickListener(getEditGiftIdeaListener());
 	}
+	
+	private <T extends ArrayAdapter> void loadListView(ListView list, T adapter, OnClickListener listener) {
+		list.setAdapter(adapter);
+		list.setOnItemClickListener(listener);
+	}
+	
 	
 	private OnClickListener getSaveClickListener() {
 		return new OnClickListener() {
