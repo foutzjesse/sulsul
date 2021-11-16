@@ -106,7 +106,7 @@ public class AnniversaryEdit extends Activity implements IView<IAnniversary>
 				String item = (String)av.getItemAtPosition(pos);
 				
 				if(item == Singletons.NEW){
-					Intent intent = new Intent(AnniversaryEdit.this, StringEdit.class);
+					Intent intent = new Intent(AnniversaryEdit.this, AnniversaryTypeEdit.class);
 					startActivity(intent);
 				}
 			}
