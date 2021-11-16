@@ -93,6 +93,13 @@
 		android:layout_marginTop="8dp"
 		android:text="Gift Ideas"/>
 	<Button
+		android:id="@+id/faves"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:text="Faves"/>
+	<Button
 		android:id="@+id/saveperson"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
