@@ -3,7 +3,7 @@ import com.tigertown.conosco.db.io.*;
 import com.tigertown.conosco.db.contracts.*;
 import com.tigertown.conosco.global.*;
 
-public abstract class StringPresenter<T> extends PresenterBase<String>
+public abstract class StringPresenter<T extends SingleColumnIoClient> extends PresenterBase<String>
 {
 	private abstract T ioClient;
 	private abstract String nameColumn;
