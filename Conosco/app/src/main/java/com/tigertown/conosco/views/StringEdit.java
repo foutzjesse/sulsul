@@ -8,9 +8,13 @@ import com.tigertown.conosco.*;
 import android.view.View.*;
 import android.view.*;
 
-public class StringEdit extends Activity implements IView<String>
+public abstract class StringEdit<T extends PresenterBase> extends Activity implements IView<String>
 {
-	private AnniversaryTypePresenter presenter;
+	private T presenter;
+	
+	public StringEdit(T p) {
+		this.presenter = p;
+	}
 	
 	EditText text;
 	Button save;
