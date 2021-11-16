@@ -15,4 +15,6 @@ public abstract class PresenterBase<T>
 	}
 	
 	public abstract void save();
+	
+	//public abstract void update();
 }

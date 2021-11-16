@@ -46,4 +46,6 @@ public class FavePresenter extends PresenterBase<IFave>
 	public void save() {
 		ioClient.upsertSingle(personId, record);
 	}
+	
+	
 }

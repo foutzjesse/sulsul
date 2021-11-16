@@ -1,6 +1,11 @@
+package com.tigertown.conosco.views;
+import com.tigertown.conosco.presenters.*;
 public class FaveTypeEdit extends StringEdit<FaveTypePresenter>
 {
-	public FaveTypeEdit() {
-		super(new FaveTypePresenter());
+
+	@Override
+	protected FaveTypePresenter getPresenter()
+	{
+		return new FaveTypePresenter(this);
 	}
 }

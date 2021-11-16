@@ -36,7 +36,7 @@ public class FaveIoClient extends IdBasedIoClient<IFave, IPersonJoinRecord>
 		processId(result, record.getId());
 		
 		result.put(Faves.TYPE, record.getType());
-		result.put(Faves.VALUE, sqlize(record.getDate()));
+		result.put(Faves.VALUE, record.getValue());
 				
 		return result;
 	}

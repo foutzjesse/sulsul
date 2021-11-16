@@ -8,13 +8,9 @@ import com.tigertown.conosco.*;
 import android.view.View.*;
 import android.view.*;
 
-public abstract class StringEdit<T extends PresenterBase> extends Activity implements IView<String>
+public abstract class StringEdit<T extends StringPresenter> extends Activity implements IView<String>
 {
 	private T presenter;
-	
-	public StringEdit(T p) {
-		this.presenter = p;
-	}
 	
 	EditText text;
 	Button save;
@@ -28,8 +24,10 @@ public abstract class StringEdit<T extends PresenterBase> extends Activity imple
 		text = (EditText)findViewById(R.id.text);
 		save = (Button)findViewById(R.id.savestring);
 		save.setOnClickListener(getSaveListener());
-		presenter = new AnniversaryTypePresenter(this);
+		presenter = getPresenter();
 	}
+	
+	protected abstract T getPresenter();
 
 	@Override
 	public void load(String data)

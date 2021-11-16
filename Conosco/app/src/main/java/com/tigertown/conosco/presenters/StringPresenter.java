@@ -5,10 +5,10 @@ import com.tigertown.conosco.global.*;
 
 public abstract class StringPresenter<T extends SingleColumnIoClient> extends PresenterBase<String>
 {
-	private abstract T ioClient;
-	private abstract String nameColumn;
+	private T ioClient;
+	private String nameColumn;
 
-	public AnniversaryTypePresenter(IView<String> v, T io, String c) {
+	public StringPresenter(IView<String> v, T io, String c) {
 		super(v);
 		this.ioClient = io;
 		this.nameColumn = c;
