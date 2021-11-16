@@ -19,7 +19,8 @@ public class AnniversaryPresenter extends PresenterBase<IAnniversary>
 	
 	public void loadData(Integer id) {
 		if (id != null)
-			record = ioClient.read(id);
+			
+			record = ioClient.readbyId(id);
 		else
 			record = new Anniversary();
 			

@@ -13,18 +13,18 @@ public class Person implements IPerson
     private String imageFile;
     private String interests;
     private String notes;
-	private List<IAnniversary> anniversaries;
-	private List<IGiftIdea> giftIdeas;
+	//private List<IAnniversary> anniversaries;
+	//private List<IGiftIdea> giftIdeas;
 
-	public void setGiftIdeas(List<IGiftIdea> giftIdeas)
-	{
-		this.giftIdeas = giftIdeas;
-	}
+	//public void setGiftIdeas(List<IGiftIdea> giftIdeas)
+	//{
+	//	this.giftIdeas = giftIdeas;
+	//}
 
-	public List<IGiftIdea> getGiftIdeas()
-	{
-		return giftIdeas;
-	}
+	//public List<IGiftIdea> getGiftIdeas()
+	//{
+	//	return giftIdeas;
+	//}
 
 	public void setName(String name)
 	{
@@ -34,16 +34,6 @@ public class Person implements IPerson
 	public String getName()
 	{
 		return name;
-	}
-
-	public void setAnniversaries(List<IAnniversary> anniversaries)
-	{
-		this.anniversaries = anniversaries;
-	}
-
-	public List<IAnniversary> getAnniversaries()
-	{
-		return anniversaries;
 	}
 
 	public void setHometown(String hometown)
@@ -124,7 +114,7 @@ public class Person implements IPerson
 	public Person()
 	{}
 
-    public Person(Integer i, String h, String ht, String r, String j, String im, String in, String n, List<IAnniversary> a, String name, List<IGiftIdea> gi)
+    public Person(Integer i, String h, String ht, String r, String j, String im, String in, String n, String name)//, List<IGiftIdea> gi)
 	{
         this.id = i;
 		this.name = name;
@@ -135,12 +125,12 @@ public class Person implements IPerson
         this.imageFile = im;
         this.interests = in;
         this.notes = n;
-		this.anniversaries = a;
-		this.giftIdeas = gi;
+		//this.anniversaries = a;
+		//this.giftIdeas = gi;
     }
 
-    public Person(String h, String ht, String r, String j, String im, String i, String n, List<IAnniversary> a, String name, List<IGiftIdea> gi)
+    public Person(String h, String ht, String r, String j, String im, String i, String n, String name)//, List<IGiftIdea> gi)
 	{
-        this(null, h, ht, r, j, im, i, n, a, name, gi);
+        this(null, h, ht, r, j, im, i, n, name);//, gi);
     }
 }

@@ -4,6 +4,7 @@ import com.tigertown.conosco.db.contracts.*;
 import com.tigertown.conosco.dataModels.*;
 import java.util.*;
 import com.tigertown.conosco.global.modelInterfaces.*;
+import com.tigertown.conosco.global.*;
 
 public class AnniversaryIoClient extends IdBasedIoClient<IAnniversary, IPersonJoinRecord>
 {
@@ -50,5 +51,12 @@ public class AnniversaryIoClient extends IdBasedIoClient<IAnniversary, IPersonJo
 			result = sqlize(a.getId());
 		
 		return result;
+	}
+
+	@Override
+	public String getDeleteWhereClause(HashMap<String, String> data)
+	{
+		// TODO: Implement this method
+		return null;
 	}
 }

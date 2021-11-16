@@ -78,36 +78,20 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" 
 		android:inputType="text"/>
-	<TextView
+	<Button
+		android:id="@+id/anniversariesList"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" 
-		android:text="Important Dates:"/>
-	<ListView
-		android:id="@+id/anniversaries"
-		android:layout_width="match_parent" 
-		android:layout_height="wrap_content" 
-		android:layout_alignParentLeft="true" 
-		android:layout_alignParentTop="true" />
-	<ImageButton
-		android:id="@+id/addAnniversary"
-		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:src="@android:drawable/btn_plus"/>
-	<TextView
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:text="Important Dates"/>
+	<Button
+		android:id="@+id/gifts"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" 
-		android:text="Gift Ideas:"/>
-	<ListView
-		android:id="@+id/giftIdeas"
-		android:layout_width="match_parent" 
-		android:layout_height="wrap_content" 
-		android:layout_alignParentLeft="true" 
-		android:layout_alignParentTop="true" />
-	<ImageButton 
-		android:id="@+id/addGiftIdea"
-		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:src="@android:drawable/btn_plus"/>
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:text="Gift Ideas"/>
 	<Button
 		android:id="@+id/saveperson"
 		android:layout_width="fill_parent"

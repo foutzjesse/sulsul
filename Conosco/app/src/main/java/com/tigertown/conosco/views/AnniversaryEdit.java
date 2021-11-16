@@ -11,8 +11,9 @@ import com.tigertown.conosco.presenters.*;
 import com.tigertown.conosco.global.modelInterfaces.*;
 import com.tigertown.conosco.*;
 import java.time.*;
+import java.util.*;
 
-public class AnniversaryEdit extends Activity implements IView<IAnniversary> //remove implements from final mainactivity?
+public class AnniversaryEdit extends Activity implements IView<IAnniversary>
 {
 	private AnniversaryPresenter presenter;
 
@@ -48,12 +49,20 @@ public class AnniversaryEdit extends Activity implements IView<IAnniversary> //r
 		presenter.loadData(recordId);
 	}
 
+	@Override
+	protected void onRestart()
+	{
+		super.onRestart();
+		loadSpinner();
+	}
+
 	private void loadSpinner() {
 		spinner = (Spinner)findViewById(R.id.spinna);
-
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, presenter.getAnniversaryTypes());
+		List<String> data = presenter.getAnniversaryTypes();
+		data.add(Singletons.NEW);
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+		spinner.setOnItemSelectedListener(getNewAnniversaryTypeListener());
         spinner.setAdapter(adapter);
 	}
 
@@ -89,5 +98,22 @@ public class AnniversaryEdit extends Activity implements IView<IAnniversary> //r
 		this.loadSpinner();
 		this.setSpinner(data.getType());
 		checkBox.setChecked(data.getNotify());
+	}
+	
+	private OnItemSelectedListener getNewAnniversaryTypeListener() {
+		return new OnItemSelectedListener(){
+			public void onItemSelected(AdapterView<?> av, View junk, int pos, long junque) {
+				String item = (String)av.getItemAtPosition(pos);
+				
+				if(item == Singletons.NEW){
+					Intent intent = new Intent(AnniversaryEdit.this, StringEdit.class);
+					startActivity(intent);
+				}
+			}
+			
+			public void onNothingSelected(AdapterView<?> av){
+				//do nothing
+			}
+		};
 	}
 }

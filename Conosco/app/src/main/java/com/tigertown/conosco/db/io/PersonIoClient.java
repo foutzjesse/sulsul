@@ -10,8 +10,7 @@ import android.content.*;
 
 public class PersonIoClient extends IoClientBase<IPerson>
 {
-	private AnniversariesPeepsIoClient anniversaryIoClient = new AnniversariesPeepsIoClient();
-	private GiftIdeaIoClient giftIoClient = new GiftIdeaIoClient();
+	//private AnniversariesPeepsIoClient anniversaryIoClient = new AnniversariesPeepsIoClient();
 	
 	public PersonIoClient() {
 		super(Peeps.TABLE_NAME);
@@ -35,22 +34,24 @@ public class PersonIoClient extends IoClientBase<IPerson>
 		String notes = getString(c, Peeps.NOTES);
 		String name = getString(c, Peeps.NAME);
 		
-		List<IAnniversary> anniversaries = null;
-		List<IGiftIdea> giftIdeas = null;
+		return new Person(id, howmet, hometown, residence, job, imageFile, interests, notes, name);
+	}
+	
+	public List<IPerson> read() {
+		List<IPerson> result = new ArrayList<>();
 		
-		if (id != null)
-		{
-			anniversaries = anniversaryIoClient.read(id);
-			giftIdeas = giftIoClient.read(id);
-		}
-		
-		if (anniversaries == null)
-			anniversaries = new ArrayList<IAnniversary>();
-		
-		if (giftIdeas == null)
-			giftIdeas = new ArrayList<IGiftIdea>();
-			
-		return new Person(id, howmet, hometown, residence, job, imageFile, interests, notes, anniversaries, name, giftIdeas);
+		String selectQuery = "SELECT * FROM " + super.table;
+
+		SQLiteDatabase db = Singletons.dbHelper.getReadableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+
+		while (cursor.moveToNext())
+			result.add(convertRow(cursor));
+
+		cursor.close();
+		db.close();
+
+		return result;
 	}
 	
 	public IPerson read(int id) {
@@ -110,5 +111,12 @@ public class PersonIoClient extends IoClientBase<IPerson>
 	public String[] getUpdateWhereClauseValues(HashMap<String, String> data)
 	{
 		return new String[]{data.get("id")};
+	}
+
+	@Override
+	public String getDeleteWhereClause(HashMap<String, String> data)
+	{
+		// TODO: Implement this method
+		return null;
 	}
 }

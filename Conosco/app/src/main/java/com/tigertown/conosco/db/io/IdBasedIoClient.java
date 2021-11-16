@@ -5,7 +5,7 @@ import com.tigertown.conosco.global.*;
 import java.util.*;
 import android.content.*;
 
-public abstract class IdBasedIoClient<T1, T2> extends IoClientBase<T1>
+public abstract class IdBasedIoClient<T1, T2> extends IoClientBase<T1> implements IPersonalDataIo<T1>
 {
 	public IdBasedIoClient(String t1, String t2, String t3) {
 		super(t1);
@@ -23,10 +23,10 @@ public abstract class IdBasedIoClient<T1, T2> extends IoClientBase<T1>
 	public abstract T1 getEmptyRecord();
 	
 	//do we really need this?
-	public T1 read(int id) {
+	public T1 readbyId(int anniversaryId) {
 		T1 result = this.getEmptyRecord();
 		
-		String selectQuery = "SELECT * FROM " + super.table + " WHERE id = " + id;
+		String selectQuery = "SELECT * FROM " + super.table + " WHERE id = " + anniversaryId;
 
 		SQLiteDatabase db = Singletons.dbHelper.getReadableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -40,7 +40,7 @@ public abstract class IdBasedIoClient<T1, T2> extends IoClientBase<T1>
 		return result;
 	}
 	
-	public List<T1> readByPerson(int personId) {
+	public List<T1> read(int personId) {
 		List<T1> list = new ArrayList<T1>();
 
 		String selectQuery = "SELECT * FROM " + joinTable + " p INNER JOIN " + super.table + " q ON p." + joinIdColumn + " = q.id WHERE p.personid = " + personId;

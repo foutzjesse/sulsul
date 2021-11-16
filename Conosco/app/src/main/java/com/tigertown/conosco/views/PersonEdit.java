@@ -22,16 +22,14 @@ public class PersonEdit extends Activity implements IView<IPerson>
 	
 	public EditText howMet, hometown, residence,
 		job, imageFile, interests, notes, name;
-	public ListView anniversaries, giftIdeas;
-	public Button saveButton;
-	public ImageButton addAnniversary, addGiftIdea;
+	public Button saveButton, giftsButton, anniversariesButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-//AnniversariesPeepsIoClient.writeTest(1,1);
-		id = getIntent().getExtras().getInt("id");
+
+		id = getIntent().getExtras().getInt("personId");
 		
 		setContentView(R.layout.personedit);
 		presenter = new PersonPresenter(this);
@@ -45,12 +43,10 @@ public class PersonEdit extends Activity implements IView<IPerson>
 		imageFile = (EditText)findViewById(R.id.imagefile);
 		interests = (EditText)findViewById(R.id.interests);
 		notes = (EditText)findViewById(R.id.personnotes);
-		anniversaries = (ListView) findViewById(R.id.anniversaries);
-		addAnniversary = (ImageButton) findViewById(R.id.addAnniversary);
-		addAnniversary.setOnClickListener(getAddAnniversaryClickListener());
-		giftIdeas = (ListView) findViewById(R.id.giftIdeas);
-		addGiftIdea = (ImageButton) findViewById(R.id.addGiftIdea);
-		addGiftIdea.setOnClickListener(getAddGiftIdeaClickListener());
+		giftsButton = (Button)findViewById(R.id.gifts);
+		giftsButton.setOnClickListener(getGiftsClickListener());
+		anniversariesButton = (Button)findViewById(R.id.anniversariesList);
+		anniversariesButton.setOnClickListener(getAnniversariesClickListener());
 		saveButton = (Button)findViewById(R.id.saveperson);
 		saveButton.setOnClickListener(getSaveClickListener());
 		builder1 = new AlertDialog.Builder(this);
@@ -76,17 +72,6 @@ public class PersonEdit extends Activity implements IView<IPerson>
 		imageFile.setText(data.getImageFile());
 		interests.setText(data.getInterests());
 		notes.setText(data.getNotes());
-		
-		loadListView(anniversaries, new AnniversaryAdapter(this, data.getAnniversaries()), getEditAnniversaryListener());
-		loadListView(giftIdeas, new GiftIdeaAdapter(this, data.getGiftIdeas()), getEditGiftIdeaListener());
-		
-		//AnniversaryAdapter anniversaryAdapter = new AnniversaryAdapter(this, data.getAnniversaries());
-		//anniversaries.setAdapter(anniversaryAdapter);
-		//anniversaries.setOnItemClickListener(getEditAnniversaryListener());
-		
-		//GiftIdeaAdapter giftAdapter = new GiftIdeaAdapter(this, data.getGiftIdeas());
-		//giftIdeas.setAdapter(giftAdapter);
-		//giftIdeas.setOnItemClickListener(getEditGiftIdeaListener());
 	}
 	
 	private <T extends ArrayAdapter> void loadListView(ListView list, T adapter, OnItemClickListener listener) {
@@ -121,74 +106,22 @@ public class PersonEdit extends Activity implements IView<IPerson>
 		};
 	}
 	
-	private OnClickListener getAddGiftIdeaClickListener() {
+	private OnClickListener getGiftsClickListener() {
 		return new OnClickListener() {
 			public void onClick(View v) {
-				try{
-					Intent intent = new Intent(PersonEdit.this, GiftIdeaEdit.class);
-					intent.putExtra("personId", id);
-					intent.putExtra("value", (String)null);
+					Intent intent = new Intent(PersonEdit.this, GiftIdeaList.class);
+					intent.putExtra("personId", (int)id);
 					startActivity(intent);
-				}
-				catch (Exception e) {
-					builder1.setMessage(e.getMessage() + e.getClass());
-					builder1.setCancelable(true); 
-					builder1.setPositiveButton( "Yes", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
-					builder1.setNegativeButton( "No", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
-					AlertDialog alert11 = builder1.create(); 
-					alert11.show();
-				}
 			}
 		};
 	}
 	
-	private OnItemClickListener getEditGiftIdeaListener() {
-		return new OnItemClickListener(){
-			public void onItemClick(AdapterView<?> av, View junk, int pos, long junque) {
-				Intent intent = new Intent(PersonEdit.this, GiftIdeaEdit.class);
-				IGiftIdea record = (IGiftIdea) av.getItemAtPosition(pos);
-				//this is literally the whole record
-				intent.putExtra("personId", id);
-				intent.putExtra("value", record.getValue());
-				startActivity(intent);
-				
-				//todo make it refresh when you go back to person view
-			}
-		};
-	}
-	
-	private OnClickListener getAddAnniversaryClickListener() {
+	private OnClickListener getAnniversariesClickListener() {
 		return new OnClickListener() {
 			public void onClick(View v) {
-				try{
-					Intent intent = new Intent(PersonEdit.this, AnniversaryEdit.class);
-					intent.putExtra("personId", id);
-					intent.putExtra("recordId", (Integer) null);
-					startActivity(intent);
-				}
-				catch (Exception e) {
-					builder1.setMessage(e.getMessage() + e.getClass());
-					builder1.setCancelable(true); 
-					builder1.setPositiveButton( "Yes", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
-					builder1.setNegativeButton( "No", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
-					AlertDialog alert11 = builder1.create(); 
-					alert11.show();
-				}
-			}
-		};
-	}
-
-	private OnItemClickListener getEditAnniversaryListener() {
-		return new OnItemClickListener(){
-			public void onItemClick(AdapterView<?> av, View junk, int pos, long junque) {
-				Intent intent = new Intent(PersonEdit.this, AnniversaryEdit.class);
-				IAnniversary record = (IAnniversary) av.getItemAtPosition(pos);
-				//todo make it pass the whole record?
-				intent.putExtra("personId", id);
-				intent.putExtra("recordId", record.getId());
+				Intent intent = new Intent(PersonEdit.this, AnniversaryList.class);
+				intent.putExtra("personId", (int)id);
 				startActivity(intent);
-
-				//todo make it refresh when you go back to person view
 			}
 		};
 	}

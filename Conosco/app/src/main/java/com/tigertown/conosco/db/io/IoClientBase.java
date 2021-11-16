@@ -46,13 +46,19 @@ public abstract class IoClientBase<T>
 	
 	public void deleteSingle(HashMap<String, String> data) {
 		SQLiteDatabase db = Singletons.dbHelper.getWritableDatabase();
-		db.delete(table, getUpdateWhereClause(), getUpdateWhereClauseValues(data));
+		String where = getUpdateWhereClause();
+		String[] args = getUpdateWhereClauseValues(data);
+		db.delete(table, where, args);
+		//String q = String.format("DELETE FROM %s WHERE %s", table, getDeleteWhereClause(data));
+		//db.execSQL(q);
 		db.close();
 	}
-	
+
 	public abstract String getUpdateWhereClause();
 	
 	public abstract String[] getUpdateWhereClauseValues(HashMap<String, String> data);
+	
+	public abstract String getDeleteWhereClause(HashMap<String, String> data);
 
     public List<T> read()
 	{
@@ -86,11 +92,11 @@ public abstract class IoClientBase<T>
 	}
 	
 	public String sqlize(Boolean b) {
-		if (b) {
-			return "1";
-		}
-		
-		return "0";
+		return b ? "1" : "0";
+	}
+	
+	public String sqlize(String s) {
+		return (s != null) ? "'" + s + "'" : "null";
 	}
 	
 	public Integer getInt(Cursor c, String key) {

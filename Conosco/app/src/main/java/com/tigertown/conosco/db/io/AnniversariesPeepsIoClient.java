@@ -8,12 +8,12 @@ import com.tigertown.conosco.global.*;
 import com.tigertown.conosco.db.contracts.*;
 import android.content.*;
 
-public class AnniversariesPeepsIoClient
+public class AnniversariesPeepsIoClient implements IPersonalDataIo<IAnniversary>
 {
 	private String table = AnniversariesPeeps.TABLE_NAME;
 	private AnniversaryIoClient anniversaryClient = new AnniversaryIoClient();
 	
-	public List<IAnniversary> read(Integer personId) {
+	public List<IAnniversary> read(int personId) {
 		List<IAnniversary> list = new ArrayList<IAnniversary>();
 
 		String selectQuery = "SELECT * FROM " + table + " WHERE personid = " + personId;
@@ -23,7 +23,7 @@ public class AnniversariesPeepsIoClient
 
 		if(cursor.moveToFirst()){
 			do{
-				list.add(anniversaryClient.read(cursor.getInt(1)));
+				list.add(anniversaryClient.readbyId(cursor.getInt(1)));
 			} while(cursor.moveToNext());
 		}
 

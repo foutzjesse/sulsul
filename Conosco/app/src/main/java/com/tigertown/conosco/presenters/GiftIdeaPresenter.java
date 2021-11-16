@@ -30,4 +30,8 @@ public class GiftIdeaPresenter extends PresenterBase<IGiftIdea>
 	public void save() {
 		ioClient.upsertSingle(oldValue, record);
 	}
+	
+	public void delete() {
+		ioClient.deleteSingle(record);
+	}
 }

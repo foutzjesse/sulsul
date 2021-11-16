@@ -9,4 +9,6 @@ public final class Singletons
 	private Singletons() {}
 	
 	public static DbHelper dbHelper;
+	
+	public static final String NEW = "New...";
 }

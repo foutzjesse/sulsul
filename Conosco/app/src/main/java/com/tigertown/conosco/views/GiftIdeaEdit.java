@@ -18,6 +18,7 @@ public class GiftIdeaEdit extends Activity implements IView<IGiftIdea> //remove 
 
 	EditText value;
 	Button save;
+	ImageButton delete;
 	AlertDialog.Builder builder1;
 	int personId;
 	String oldValue;
@@ -35,19 +36,41 @@ public class GiftIdeaEdit extends Activity implements IView<IGiftIdea> //remove 
 
 		value = (EditText)findViewById(R.id.giftvalue);
 		save = (Button)findViewById(R.id.savegift);
-		save.setOnClickListener(getClickListener());
+		save.setOnClickListener(getSaveListener());
+		delete = (ImageButton)findViewById(R.id.deletegift);
+		delete.setOnClickListener(getDeleteListener());
 		presenter = new GiftIdeaPresenter(this, personId, oldValue);
 		builder1 = new AlertDialog.Builder(this);
 
 		presenter.loadData(personId, oldValue);
 	}
+	
+	private OnClickListener getDeleteListener() {
+		return new OnClickListener() {
+			public void onClick(View v) {
+				try{
+					presenter.delete();
+					finish();
+				}
+				catch (Exception e) {
+					builder1.setMessage(e.getMessage() + e.getClass());
+					builder1.setCancelable(true); 
+					builder1.setPositiveButton( "Yes", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
+					builder1.setNegativeButton( "No", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int id) { dialog.cancel(); } }); 
+					AlertDialog alert11 = builder1.create(); 
+					alert11.show();
+				}
+			}
+		};
+	}
 
-	private OnClickListener getClickListener() {
+	private OnClickListener getSaveListener() {
 		return new OnClickListener() {
 			public void onClick(View v) {
 				try{
 					presenter.update(value.getText().toString());
 					presenter.save();
+					finish();
 				}
 				catch (Exception e) {
 					builder1.setMessage(e.getMessage() + e.getClass());

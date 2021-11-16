@@ -7,7 +7,7 @@ import java.util.*;
 import android.database.sqlite.*;
 import com.tigertown.conosco.global.*;
 
-public class GiftIdeaIoClient extends IoClientBase<IGiftIdea>
+public class GiftIdeaIoClient extends IoClientBase<IGiftIdea> implements IPersonalDataIo<IGiftIdea>
 {
 	public GiftIdeaIoClient() {
 		super(GiftIdeas.TABLE_NAME);
@@ -60,6 +60,11 @@ public class GiftIdeaIoClient extends IoClientBase<IGiftIdea>
 			insertSingle(record);
 		}
 	}
+	
+	public void deleteSingle(IGiftIdea record)
+	{
+		deleteSingle(new HashMap<String, String>(Map.of(GiftIdeas.ID, String.valueOf(record.getPersonid()), GiftIdeas.VALUE, record.getValue())));
+	}
 
 	@Override
 	public void updateSingle(HashMap<String, String> data)
@@ -76,6 +81,12 @@ public class GiftIdeaIoClient extends IoClientBase<IGiftIdea>
 	@Override
 	public String[] getUpdateWhereClauseValues(HashMap<String, String> data)
 	{
-		return new String[]{data.get("id"), data.get("value")};
+		return new String[]{data.get("personid"), data.get("value")};
+	}
+
+	@Override
+	public String getDeleteWhereClause(HashMap<String, String> data)
+	{
+		return String.format("%s = %s AND %s = %s", GiftIdeas.ID, data.get("personId"), GiftIdeas.VALUE, data.get("value"));
 	}
 }

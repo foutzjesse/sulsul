@@ -24,8 +24,7 @@ public class MainActivity extends Activity
 
 		buttonOne.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, PersonEdit.class);
-				intent.putExtra("id", 1);
+				Intent intent = new Intent(MainActivity.this, PeepsList.class);
 				startActivity(intent);
 			}
 		});

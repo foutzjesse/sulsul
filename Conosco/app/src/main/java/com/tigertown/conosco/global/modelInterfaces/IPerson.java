@@ -18,10 +18,10 @@ public interface IPerson
 	public Integer getId();
 	public String getHowMet();
 	public void setHowMet(String howMet);
-	public void setAnniversaries(List<IAnniversary> anniversaries);
-	public List<IAnniversary> getAnniversaries();
+	//public void setAnniversaries(List<IAnniversary> anniversaries);
+	//public List<IAnniversary> getAnniversaries();
 	public String getName();
 	public void setName(String name);
-	public void setGiftIdeas(List<IGiftIdea> giftIdeas);
-	public List<IGiftIdea> getGiftIdeas();
+	//public void setGiftIdeas(List<IGiftIdea> giftIdeas);
+	//public List<IGiftIdea> getGiftIdeas();
 }
