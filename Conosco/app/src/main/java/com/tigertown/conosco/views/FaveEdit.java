@@ -60,7 +60,7 @@ public class FaveEdit extends Activity implements IView<IFave>
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		type.setOnItemSelectedListener(getNewFaveTypeListener());
-        spinner.setAdapter(adapter);
+        type.setAdapter(adapter);
 	}
 
 	private OnClickListener getClickListener() {
@@ -91,7 +91,7 @@ public class FaveEdit extends Activity implements IView<IFave>
 
 	@Override
 	public void load(IFave data) {
-		value.setText(data.getDate() == null ? null : data.getDate().toString());
+		value.setText(data.getValue());
 		this.loadSpinner();
 		this.setSpinner(data.getType());
 	}

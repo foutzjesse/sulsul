@@ -23,7 +23,7 @@ public class FaveAdapter extends ArrayAdapter<IFave>
 			convertView = LayoutInflater.from(getContext()).inflate(R.layout.favelistitem, parent, false);
 			
 		TextView type = (TextView) convertView.findViewById(R.id.type);
-		TextView date = (TextView) convertView.findViewById(R.id.date);
+		TextView date = (TextView) convertView.findViewById(R.id.value);
 		
 		type.setText(fave.getType());
 		date.setText(fave.getValue());

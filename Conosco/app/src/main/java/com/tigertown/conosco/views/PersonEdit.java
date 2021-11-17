@@ -47,7 +47,7 @@ public class PersonEdit extends Activity implements IView<IPerson>
 		giftsButton.setOnClickListener(getGiftsClickListener());
 		anniversariesButton = (Button)findViewById(R.id.anniversariesList);
 		anniversariesButton.setOnClickListener(getAnniversariesClickListener());
-		favesButton = (Button)findViewById(R.id.favesList);
+		favesButton = (Button)findViewById(R.id.faves);
 		favesButton.setOnClickListener(getFavesClickListener());
 		saveButton = (Button)findViewById(R.id.saveperson);
 		saveButton.setOnClickListener(getSaveClickListener());
