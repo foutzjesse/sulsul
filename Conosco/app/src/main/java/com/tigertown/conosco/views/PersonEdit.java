@@ -22,7 +22,7 @@ public class PersonEdit extends Activity implements IView<IPerson>
 	
 	public EditText howMet, hometown, residence,
 		job, imageFile, interests, notes, name;
-	public Button saveButton, giftsButton, anniversariesButton, favesButton;
+	public Button saveButton, giftsButton, anniversariesButton, favesButton, linkContactButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -49,6 +49,8 @@ public class PersonEdit extends Activity implements IView<IPerson>
 		anniversariesButton.setOnClickListener(getAnniversariesClickListener());
 		favesButton = (Button)findViewById(R.id.faves);
 		favesButton.setOnClickListener(getFavesClickListener());
+		linkContactButton = (Button)findViewById(R.id.linkContact);
+		linkContactButton.setOnClickListener(getContactClickListener());
 		saveButton = (Button)findViewById(R.id.saveperson);
 		saveButton.setOnClickListener(getSaveClickListener());
 		builder1 = new AlertDialog.Builder(this);
@@ -133,6 +135,16 @@ public class PersonEdit extends Activity implements IView<IPerson>
 			public void onClick(View v) {
 				Intent intent = new Intent(PersonEdit.this, FaveList.class);
 				intent.putExtra("personId", (int)id);
+				startActivity(intent);
+			}
+		};
+	}
+	
+	private OnClickListener getContactClickListener() {
+		return new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(PersonEdit.this, Contact.class);
+				//intent.putExtra("personId", (int)id);
 				startActivity(intent);
 			}
 		};
