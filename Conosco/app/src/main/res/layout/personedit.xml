@@ -100,6 +100,13 @@
 		android:layout_marginTop="8dp"
 		android:text="Faves"/>
 	<Button
+		android:id="@+id/linkContact"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:text="Link Contact"/>
+	<Button
 		android:id="@+id/saveperson"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
