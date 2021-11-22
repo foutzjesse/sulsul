@@ -27,7 +27,8 @@ public final class InitialMigration
 		GroupsPeeps.CREATE_TABLE,
 		NamesPeeps.CREATE_TABLE,
 		Relationships.CREATE_TABLE,
-		TraitsPeeps.CREATE_TABLE
+		TraitsPeeps.CREATE_TABLE,
+		ContactsPeeps.CREATE_TABLE
 		);
 		
 	public static final String ANNIVERSARYTYPES =
