@@ -48,7 +48,7 @@ public class DbHelper extends SQLiteOpenHelper
 	public void AdHocDevPowersGo() {
 		SQLiteDatabase db = this.getWritableDatabase();
 		
-		db.execSQL("ALTER TABLE peeps ADD COLUMN name TEXT");
+		db.execSQL(ContactsPeeps.CREATE_TABLE);
 		
 		db.close();
 	}
