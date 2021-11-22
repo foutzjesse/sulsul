@@ -5,8 +5,8 @@ import java.util.*;
 public interface IPersonContact
 {
 	public Integer getId();
-	public int getType();
-	public void setType(int t);
+	public Integer getType();
+	public void setType(Integer t);
 	public String getValue();
 	public void setValue(String v);
 }

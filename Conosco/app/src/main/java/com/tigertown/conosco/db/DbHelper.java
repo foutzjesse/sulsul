@@ -4,6 +4,7 @@ import android.content.*;
 import com.tigertown.conosco.global.*;
 import java.util.*;
 import android.database.*;
+import com.tigertown.conosco.db.contracts.*;
 
 public class DbHelper extends SQLiteOpenHelper
 {

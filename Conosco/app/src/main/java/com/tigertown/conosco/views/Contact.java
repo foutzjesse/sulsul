@@ -17,6 +17,7 @@ public class Contact extends Activity {
 	private ImageView thumbnail;
 	private TextView contactInfo;
 	private Button button;
+	private int contactId;
 	
 	private static final int CONTACT_PERMISSION_CODE = 1;
 	private static final int CONTACT_PICK_CODE = 2;

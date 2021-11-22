@@ -18,7 +18,7 @@ public final class ContactsPeeps
 	{
 		return Arrays.asList(Pair.create(PERSON_ID, DataTypes.INT),
 							 Pair.create(TYPE, DataTypes.INT),
-							 Paid.Create(CONTACT, DataTypes.TEXT) //phone contact is a number);
+							 Pair.create(CONTACT, DataTypes.TEXT)); //phone contact is a number
 	}
 
 	public static String GetPrimaryKey()
