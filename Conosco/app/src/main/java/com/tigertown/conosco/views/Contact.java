@@ -12,12 +12,18 @@ import android.support.v4.app.*;
 import android.support.v4.content.*;
 import android.view.*;
 import android.widget.*;
+import com.tigertown.conosco.db.io.*;
 
 public class Contact extends Activity {
 	private ImageView thumbnail;
 	private TextView contactInfo;
 	private Button button;
 	private int contactId;
+	private ContactIoClient io;
+	
+	public Contact() {
+		this.io = new ContactIoClient();
+	}
 	
 	private static final int CONTACT_PERMISSION_CODE = 1;
 	private static final int CONTACT_PICK_CODE = 2;
@@ -34,6 +40,8 @@ public class Contact extends Activity {
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				
+				
 				if(checkPermission()) {
 					pickContactIntent();
 				}
