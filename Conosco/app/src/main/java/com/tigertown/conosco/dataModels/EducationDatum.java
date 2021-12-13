@@ -1,9 +1,9 @@
 package com.tigertown.conosco.dataModels;
 
 public class EducationDatum {
-    public Integer id, year;
-    public int personId;
-    public String school, degree, major, notes;
+    private Integer id, year;
+    private int personId;
+    private String school, degree, major, notes;
     
     public EducationDatum(Integer i, int p, String s, Integer y, String d, String m, String n) {
         this.id = i;
