@@ -11,7 +11,8 @@ public final class EducationData
 	public static final String TABLE_NAME = "educationdata";
 	
 	public static final String ID = "id";
-	public static final String SCHOOL_ID = "schoolid";
+	public static final String PERSON_ID = "personid";
+	public static final String SCHOOL = "school";
 	public static final String YEAR = "year";
 	public static final String DEGREE = "degree";
 	public static final String MAJOR = "major";
@@ -20,21 +21,22 @@ public final class EducationData
 	public static List<Pair<String, String>> GetColumns()
 	{
 		return Arrays.asList(Pair.create(ID, DataTypes.INTPK),
-			Pair.create(SCHOOL_ID, DataTypes.INT),
+			Pair.create(PERSON_ID, DataTypes.INT),
+			Pair.create(SCHOOL, DataTypes.TEXT),
 			Pair.create(YEAR, DataTypes.INT),
 			Pair.create(DEGREE, DataTypes.TEXT),
 			Pair.create(MAJOR, DataTypes.TEXT),
 			Pair.create(NOTES, DataTypes.TEXT));
 	}
-
+	
 	public static String GetPrimaryKey()
 	{
 		return "";
 	}
-	
+
 	public static List<ForeignKey> GetForeignKeys()
 	{
-		return Arrays.asList(new ForeignKey("fk_" + TABLE_NAME + SCHOOL_ID, SCHOOL_ID, Schools.TABLE_NAME, Schools.ID));
+		return Arrays.asList(new ForeignKey("fk_" + TABLE_NAME + PERSON_ID, PERSON_ID, Peeps.TABLE_NAME, Peeps.ID));
 	}
 	
 	public static final String CREATE_TABLE = 
