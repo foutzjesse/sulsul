@@ -1,6 +1,6 @@
 package com.tigertown.conosco.dataModels;
 
-public class EducationDatum {
+public class EducationDatum extends IEducationDatum {
     private Integer id, year;
     private int personId;
     private String school, degree, major, notes;
