@@ -9,27 +9,28 @@ import com.tigertown.conosco.db.io.*;
 
 public class EducationList extends PersonalList<IEducationDatum, EducationAdapter>
 {
-	/*@Override
-	public PersonalListPresenter<IFave> getPresenter()
+	@Override
+	public PersonalListPresenter<IEducationDatum> getPresenter()
 	{
-		return new PersonalListPresenter<IFave>(this, new FavesPeepsIoClient());
+		return new PersonalListPresenter<IEducationDatum>(this, new EducationIoClient());
 	}
 	
 	@Override
 	public Intent createIntent()
 	{
-		return new Intent(FaveList.this, FaveEdit.class);
+		return new Intent(EducationList.this, EducationEdit.class);
 	}
 
 	@Override
-	public void getAdditionalKeyInfo(Intent intent, IFave record)
+	public void getAdditionalKeyInfo(Intent intent, IEducationDatum record)
 	{
-		intent.putExtra("recordId", (record == null) ? (Integer)null : record.getId());
+		intent.putExtra("id", (record == null) ? (Integer)null : record.getId());
+		intent.putExtra("personId", (record == null) ? (Integer)null : record.getPersonId());
 	}
 
 	@Override
-	public FaveAdapter getAdapter()
+	public EducationAdapter getAdapter()
 	{
-		return new FaveAdapter(this, data);
-	}*/
+		return new EducationAdapter(this, data);
+	}
 }
