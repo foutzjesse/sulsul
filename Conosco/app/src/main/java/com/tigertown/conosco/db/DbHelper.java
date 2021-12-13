@@ -48,8 +48,10 @@ public class DbHelper extends SQLiteOpenHelper
 	
 	public void AdHocDevPowersGo() {
 		SQLiteDatabase db = this.getWritableDatabase();
-		
-		db.execSQL(ContactsPeeps.CREATE_TABLE);
+		db.execSQL("DROP TABLE educationdata");
+		db.execSQL("DROP TABLE educationpeeps");
+		db.execSQL("DROP TABLE schools");
+		db.execSQL(EducationData.CREATE_TABLE);
 		
 		db.close();
 	}

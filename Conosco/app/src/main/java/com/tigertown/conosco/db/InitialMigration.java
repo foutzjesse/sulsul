@@ -14,13 +14,11 @@ public final class InitialMigration
 		Names.CREATE_TABLE,
 		Peeps.CREATE_TABLE,
 		RelationshipTypes.CREATE_TABLE,
-		Schools.CREATE_TABLE,
 		Traits.CREATE_TABLE,
 		//fk tables
 		Anniversaries.CREATE_TABLE,
 		AnniversariesPeeps.CREATE_TABLE,
 		EducationData.CREATE_TABLE,
-		EducationPeeps.CREATE_TABLE,
 		Faves.CREATE_TABLE,
 		FavesPeeps.CREATE_TABLE,
 		GiftIdeas.CREATE_TABLE,
