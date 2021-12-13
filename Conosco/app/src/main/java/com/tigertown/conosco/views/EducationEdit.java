@@ -14,13 +14,12 @@ import java.util.*;
 
 public class EducationEdit extends Activity implements IView<IEducationDatum>
 {
-    Integer id;
-    int personId;
+    Integer id, personId;
     
     EditText school, degree, major, notes;
     EditNumber year;
     Button saveButton;
-	/*private FavePresenter presenter;
+    private EducationPresenter presenter;
 	ArrayAdapter<String> adapter;
 	AlertDialog.Builder builder1;
 
@@ -30,11 +29,11 @@ public class EducationEdit extends Activity implements IView<IEducationDatum>
 		super.onCreate(savedInstanceState);
 	
 		personId = getIntent().getExtras().getInt("personId");
-		recordId = getIntent().getExtras().getInt("recordId");
+		id = getIntent().getExtras().getInt("id");
 		
-		setContentView(R.layout.faveedit);
-		presenter = new FavePresenter(this, personId);
-
+		setContentView(R.layout.educationedit);
+		presenter = new EducationPresenter(this, personId);
+/*
 		value = (EditText)findViewById(R.id.faveValue);
 		loadSpinner();
 		saveButton = (Button)findViewById(R.id.saveFaveButton);
@@ -42,9 +41,9 @@ public class EducationEdit extends Activity implements IView<IEducationDatum>
 		builder1 = new AlertDialog.Builder(this);
 		idThing = (TextView)findViewById(R.id.idThing);
 
-		presenter.loadData(recordId);
+		presenter.loadData(recordId);*/
 	}
-
+/*
 	@Override
 	protected void onRestart()
 	{
