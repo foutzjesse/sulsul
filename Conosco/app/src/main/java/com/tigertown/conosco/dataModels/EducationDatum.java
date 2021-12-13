@@ -1,6 +1,7 @@
 package com.tigertown.conosco.dataModels;
+import com.tigertown.conosco.global.modelInterfaces.*;
 
-public class EducationDatum extends IEducationDatum {
+public class EducationDatum implements IEducationDatum {
     private Integer id, year;
     private int personId;
     private String school, degree, major, notes;
