@@ -9,6 +9,7 @@ public final class InitialMigration
 	public static final List<String> TABLES = Arrays.asList(
 		//domain tables
 		AnniversaryTypes.CREATE_TABLE,
+		
 		FaveTypes.CREATE_TABLE,
 		Groups.CREATE_TABLE,
 		Names.CREATE_TABLE,
@@ -18,6 +19,7 @@ public final class InitialMigration
 		//fk tables
 		Anniversaries.CREATE_TABLE,
 		AnniversariesPeeps.CREATE_TABLE,
+		Associations.CREATE_TABLE,
 		EducationData.CREATE_TABLE,
 		Faves.CREATE_TABLE,
 		FavesPeeps.CREATE_TABLE,
@@ -34,7 +36,6 @@ public final class InitialMigration
 		" (" + AnniversaryTypes.NAME + ") " +
 		"VALUES ('Birthday'), " +
 		"('Relationship'), " +
-		"('Sobriety'), " +
 		"('Wedding')";
 	
 	public static final String FAVETYPES =

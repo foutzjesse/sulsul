@@ -16,8 +16,7 @@ public class EducationEdit extends Activity implements IView<IEducationDatum>
 {
     Integer id, personId;
     
-    EditText school, degree, major, notes;
-    EditNumber year;
+    EditText school, degree, major, notes, year;
     Button saveButton;
     private EducationPresenter presenter;
 	ArrayAdapter<String> adapter;
@@ -32,40 +31,31 @@ public class EducationEdit extends Activity implements IView<IEducationDatum>
 		id = getIntent().getExtras().getInt("id");
 		
 		setContentView(R.layout.educationedit);
-		presenter = new EducationPresenter(this, personId);
-/*
-		value = (EditText)findViewById(R.id.faveValue);
-		loadSpinner();
-		saveButton = (Button)findViewById(R.id.saveFaveButton);
+		presenter = new EducationPresenter(this, id, personId);
+
+		school = (EditText)findViewById(R.id.school);
+		degree = (EditText)findViewById(R.id.degree);
+		major = (EditText)findViewById(R.id.major);
+		notes = (EditText)findViewById(R.id.notes);
+		year = (EditText)findViewById(R.id.gradYear);
+		saveButton = (Button)findViewById(R.id.save);
 		saveButton.setOnClickListener(getClickListener());
 		builder1 = new AlertDialog.Builder(this);
-		idThing = (TextView)findViewById(R.id.idThing);
 
-		presenter.loadData(recordId);*/
+		presenter.loadData(id);
 	}
-/*
+
 	@Override
 	protected void onRestart()
 	{
 		super.onRestart();
-		loadSpinner();
-	}
-
-	private void loadSpinner() {
-		type = (Spinner)findViewById(R.id.faveTypes);
-		List<String> data = presenter.getFaveTypes();
-		data.add(Singletons.NEW);
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		type.setOnItemSelectedListener(getNewFaveTypeListener());
-        type.setAdapter(adapter);
 	}
 
 	private OnClickListener getClickListener() {
 		return new OnClickListener() {
 			public void onClick(View v) {
 				try{
-					presenter.update(type.getSelectedItem().toString(), value.getText().toString());
+					presenter.update(school.getText().toString(), year.getText().toString(), degree.getText().toString(), major.getText().toString(), notes.getText().toString());
 					presenter.save();
 				}
 				catch (Exception e) {
@@ -80,34 +70,14 @@ public class EducationEdit extends Activity implements IView<IEducationDatum>
 		};
 	}
 
-	private void setSpinner(String value) {
-		if (value != null) {
-			int pos = adapter.getPosition(value);
-			type.setSelection(pos);
-		}
-	}
-
 	@Override
-	public void load(IFave data) {
-		value.setText(data.getValue());
-		this.loadSpinner();
-		this.setSpinner(data.getType());
+	public void load(IEducationDatum data) {
+		school.setText(data.getSchool());
+		
+		String y = String.valueOf(data.getYear());
+		year.setText((y == "null") ? null : y);
+		degree.setText(data.getDegree());
+		major.setText(data.getMajor());
+		notes.setText(data.getNotes());
 	}
-	
-	private OnItemSelectedListener getNewFaveTypeListener() {
-		return new OnItemSelectedListener(){
-			public void onItemSelected(AdapterView<?> av, View junk, int pos, long junque) {
-				String item = (String)av.getItemAtPosition(pos);
-				
-				if(item == Singletons.NEW){
-					Intent intent = new Intent(FaveEdit.this, FaveTypeEdit.class);
-					startActivity(intent);
-				}
-			}
-			
-			public void onNothingSelected(AdapterView<?> av){
-				//do nothing
-			}
-		};
-	}*/
 }

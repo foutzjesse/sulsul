@@ -1,19 +1,20 @@
 package com.tigertown.conosco.views;
 
 import android.app.*;
-import android.content.*;
 import android.os.*;
-import android.view.*;
-import android.view.View.*;
+import android.content.*;
 import android.widget.*;
-import com.tigertown.conosco.*;
+import android.view.*;
 import com.tigertown.conosco.global.*;
-import com.tigertown.conosco.global.modelInterfaces.*;
+import android.widget.AdapterView.*;
 import com.tigertown.conosco.presenters.*;
+import com.tigertown.conosco.global.modelInterfaces.*;
+import com.tigertown.conosco.*;
+import java.util.*;
 
-public class GiftIdeaEdit extends Activity implements IView<IGiftIdea>
+public class AssociationEdit extends Activity implements IView<IAssociation>
 {
-	private GiftIdeaPresenter presenter;
+	private AssociationPresenter presenter;
 
 	EditText value;
 	Button save;
@@ -21,7 +22,7 @@ public class GiftIdeaEdit extends Activity implements IView<IGiftIdea>
 	AlertDialog.Builder builder1;
 	int personId;
 	String oldValue;
-	
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -31,19 +32,19 @@ public class GiftIdeaEdit extends Activity implements IView<IGiftIdea>
 		personId = getIntent().getExtras().getInt("personId");
 		oldValue = getIntent().getExtras().getString("value");
 
-		setContentView(R.layout.giftideaedit);
+		setContentView(R.layout.associationedit);
 
-		value = (EditText)findViewById(R.id.giftvalue);
-		save = (Button)findViewById(R.id.savegift);
+		value = (EditText)findViewById(R.id.value);
+		save = (Button)findViewById(R.id.save);
 		save.setOnClickListener(getSaveListener());
-		delete = (ImageButton)findViewById(R.id.deletegift);
+		delete = (ImageButton)findViewById(R.id.delete);
 		delete.setOnClickListener(getDeleteListener());
-		presenter = new GiftIdeaPresenter(this, personId, oldValue);
+		presenter = new AssociationPresenter(this, personId, oldValue);
 		builder1 = new AlertDialog.Builder(this);
 
 		presenter.loadData(personId, oldValue);
 	}
-	
+
 	private OnClickListener getDeleteListener() {
 		return new OnClickListener() {
 			public void onClick(View v) {
@@ -84,7 +85,7 @@ public class GiftIdeaEdit extends Activity implements IView<IGiftIdea>
 	}
 
 	@Override
-	public void load(IGiftIdea data) {
+	public void load(IAssociation data) {
 		value.setText(data.getValue());
 	}
 }

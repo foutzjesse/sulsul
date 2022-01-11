@@ -14,7 +14,7 @@ import java.util.*;
 public abstract class PersonalList<T1, T2 extends ArrayAdapter> extends Activity implements IView<List<T1>>
 {
 	private PersonalListPresenter<T1> presenter;
-	private Integer id;
+	protected Integer id;
 	protected List<T1> data;
 	
 	public ListView list;

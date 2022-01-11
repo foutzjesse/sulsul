@@ -13,11 +13,27 @@ public class EducationIoClient extends IoClientBase<IEducationDatum> implements 
 		super(EducationData.TABLE_NAME);
 	}
 	
-	public List<IEducationDatum> read(int id)
+	public IEducationDatum readSingle(int id, int personId) {
+		IEducationDatum result = new EducationDatum(personId);
+		String selectQuery = "SELECT * FROM " + super.table + " WHERE " + EducationData.ID + " = " + id;
+
+		SQLiteDatabase db = Singletons.dbHelper.getReadableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+
+		if(cursor.moveToFirst())
+			result = convertRow(cursor);
+
+		cursor.close();
+		db.close();
+
+		return result;
+	}
+	
+	public List<IEducationDatum> read(int personId)
 	{
 		List<IEducationDatum> list = new ArrayList<IEducationDatum>();
 
-		String selectQuery = "SELECT * FROM " + super.table + " WHERE " + EducationData.PERSON_ID + " = " + id;
+		String selectQuery = "SELECT * FROM " + super.table + " WHERE " + EducationData.PERSON_ID + " = " + personId;
 
 		SQLiteDatabase db = Singletons.dbHelper.getReadableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);

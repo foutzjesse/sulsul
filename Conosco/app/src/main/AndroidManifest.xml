@@ -50,5 +50,17 @@
 	    	<activity
 			android:name=".views.Contact"
 			android:label="@string/app_name"></activity>
+		<activity
+			android:name=".views.EducationEdit"
+			android:label="@string/app_name"></activity>
+		<activity
+			android:name=".views.EducationList"
+			android:label="@string/app_name"></activity>
+		<activity
+			android:name=".views.AssociationEdit"
+			android:label="@string/app_name"></activity>
+		<activity
+			android:name=".views.AssociationList"
+			android:label="@string/app_name"></activity>
     </application>
 </manifest>

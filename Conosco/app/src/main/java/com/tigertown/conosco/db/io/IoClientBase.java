@@ -36,7 +36,11 @@ public abstract class IoClientBase<T>
 
 		while (iterator.hasNext()) {
 			Map.Entry datum = (Map.Entry)iterator.next();
-			values.put((String)datum.getKey(), (String)datum.getValue());
+			
+			if (datum.getValue() != null)
+				values.put((String)datum.getKey(), (String)datum.getValue());
+			else
+				values.putNull((String)datum.getKey());
 		}
 
 		db.update(table, values, getUpdateWhereClause(), getUpdateWhereClauseValues(data));
@@ -88,7 +92,7 @@ public abstract class IoClientBase<T>
 	}
 	
 	public String sqlize(Integer i) {
-		return i.toString();
+		return (i != null) ? i.toString() : null;
 	}
 	
 	public String sqlize(Boolean b) {
@@ -100,7 +104,10 @@ public abstract class IoClientBase<T>
 	}
 	
 	public Integer getInt(Cursor c, String key) {
-		return c.getInt(c.getColumnIndex(key));
+		if (!c.isNull(c.getColumnIndex(key)))
+			return c.getInt(c.getColumnIndex(key));
+			
+		return null;
 	}
 	
 	public String getString(Cursor c, String key) {

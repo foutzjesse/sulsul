@@ -107,6 +107,20 @@
 		android:layout_marginTop="8dp"
 		android:text="Link Contact"/>
 	<Button
+		android:id="@+id/educationList"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:text="Education"/>
+	<Button
+		android:id="@+id/associationList"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:text="Ties"/>
+	<Button
 		android:id="@+id/saveperson"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"

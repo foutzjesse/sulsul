@@ -7,27 +7,23 @@ import java.util.*;
 
 public class EducationPresenter extends PresenterBase<IEducationDatum>
 {
-	private EducationIoClient ioClient = new FaveIoClient();
+	private EducationIoClient ioClient = new EducationIoClient();
 	private int personId;
     private Integer id;
 	
-	public EducationPresenter(IView<IFave> v, Integer i, int pid) {
+	public EducationPresenter(IView<IEducationDatum> v, Integer i, int pid) {
 		super(v);
         id = i;
 		personId = pid;
 	}
 	
 	public void loadData(Integer id) {
-		if (id != null)
-			
-			record = ioClient.readbyId(id);
-		else
-			record = new EducationDatum();
+		record = ioClient.readSingle(id, personId);
 			
 		this.presentData();
 	}
 	
-	public void update(String s, Integer y, String d, String m, String n) {
+	public void update(String s, String y, String d, String m, String n) {
 		updateSchool(s);
         updateYear(y);
         updateDegree(d);
@@ -39,8 +35,13 @@ public class EducationPresenter extends PresenterBase<IEducationDatum>
 		record.setSchool(s);
 	}
 	
-	public void updateYear (Integer i) {
-        record.setYear(i);
+	public void updateYear (String i) {
+		Integer ii = null;
+		
+		if (i != null && i.length() > 0)
+			ii = Integer.parseInt(i);
+
+        record.setYear(ii);
     }
     
     public void updateDegree (String s) {
@@ -52,7 +53,7 @@ public class EducationPresenter extends PresenterBase<IEducationDatum>
     }
     
     public void updateNotes (String s) {
-        record.updateNotes(s);
+        record.setNotes(s);
     }
 		
 	public void save() {

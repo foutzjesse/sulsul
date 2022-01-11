@@ -2,7 +2,7 @@ package com.tigertown.conosco.dataModels;
 import com.tigertown.conosco.global.modelInterfaces.*;
 
 public class EducationDatum implements IEducationDatum {
-    private Integer id, year;
+    public Integer id, year;
     private int personId;
     private String school, degree, major, notes;
     
@@ -19,6 +19,10 @@ public class EducationDatum implements IEducationDatum {
     public EducationDatum(int p, String s, Integer y, String d, String m, String n) {
         this(null, p, s, y, d, m, n);
     }
+	
+	public EducationDatum(int p) {
+		this(null, p, null, null, null, null, null);
+	}
 
 	public void setId(Integer id)
 	{

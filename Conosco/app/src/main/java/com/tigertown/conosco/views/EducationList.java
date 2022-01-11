@@ -25,7 +25,7 @@ public class EducationList extends PersonalList<IEducationDatum, EducationAdapte
 	public void getAdditionalKeyInfo(Intent intent, IEducationDatum record)
 	{
 		intent.putExtra("id", (record == null) ? (Integer)null : record.getId());
-		intent.putExtra("personId", (record == null) ? (Integer)null : record.getPersonId());
+		intent.putExtra("personId", this.id);// (record == null) ? (Integer)null : record.getPersonId());
 	}
 
 	@Override

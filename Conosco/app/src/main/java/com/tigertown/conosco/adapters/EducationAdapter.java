@@ -8,7 +8,7 @@ import com.tigertown.conosco.*;
 
 public class EducationAdapter extends ArrayAdapter<IEducationDatum>
 {
-	public GiftIdeaAdapter(Context c, List<IEducationDatum> data) {
+	public EducationAdapter(Context c, List<IEducationDatum> data) {
 		super(c, 0, data);
 	}
 
@@ -20,11 +20,11 @@ public class EducationAdapter extends ArrayAdapter<IEducationDatum>
 		//check if view is being reused. otherwise inflate.
 		//probably not necessary for this small list, but i don't really know.
 		if(convertView == null)
-			convertView = LayoutInflater.from(getContext()).inflate(R.layout.educationlistitem, parent, false);
+			convertView = LayoutInflater.from(getContext()).inflate(R.layout.edlistitem, parent, false);
 
 		TextView summary = (TextView) convertView.findViewById(R.id.edsummary);
 
-		summary.setText(composeSummary());
+		summary.setText(composeSummary(record));
 
 		return convertView;
 	}
@@ -34,18 +34,18 @@ public class EducationAdapter extends ArrayAdapter<IEducationDatum>
         String result = "";
         
         if (record.getSchool() != null)
-            result += record.getSchool()
+            result += record.getSchool();
         
         if (record.getYear() != null) {
             String year = String.valueOf(record.getYear());
-            result += " " + (year.length() == 4) ? "'" + year.substring(year.length() - 2) : year;
+            result += " " + ((year.length() == 4) ? "'" + year.substring(year.length() - 2) : year);
         }
         
         if ((result == "" || result.startsWith(" ")) && record.getMajor() != null)
             result += " " + record.getMajor();
         
         if (result == "")
-            result = (result.getDegree()) != null ? result.getDegree() : result.getNotes();
+            result = (record.getDegree()) != null ? record.getDegree() : record.getNotes();
         
         return result.trim();
     }

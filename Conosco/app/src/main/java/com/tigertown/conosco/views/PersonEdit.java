@@ -22,7 +22,7 @@ public class PersonEdit extends Activity implements IView<IPerson>
 	
 	public EditText howMet, hometown, residence,
 		job, imageFile, interests, notes, name;
-	public Button saveButton, giftsButton, anniversariesButton, favesButton, linkContactButton;
+	public Button saveButton, giftsButton, anniversariesButton, favesButton, linkContactButton, educationButton, associationButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +51,10 @@ public class PersonEdit extends Activity implements IView<IPerson>
 		favesButton.setOnClickListener(getFavesClickListener());
 		linkContactButton = (Button)findViewById(R.id.linkContact);
 		linkContactButton.setOnClickListener(getContactClickListener());
+		educationButton = (Button)findViewById(R.id.educationList);
+		educationButton.setOnClickListener(getEducationClickListener());
+		associationButton = (Button)findViewById(R.id.associationList);
+		associationButton.setOnClickListener(getAssociationClickListener());
 		saveButton = (Button)findViewById(R.id.saveperson);
 		saveButton.setOnClickListener(getSaveClickListener());
 		builder1 = new AlertDialog.Builder(this);
@@ -145,6 +149,26 @@ public class PersonEdit extends Activity implements IView<IPerson>
 			public void onClick(View v) {
 				Intent intent = new Intent(PersonEdit.this, Contact.class);
 				//intent.putExtra("personId", (int)id);
+				startActivity(intent);
+			}
+		};
+	}
+	
+	private OnClickListener getAssociationClickListener() {
+		return new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(PersonEdit.this, AssociationList.class);
+				intent.putExtra("personId", (int)id);
+				startActivity(intent);
+			}
+		};
+	}
+	
+	private OnClickListener getEducationClickListener() {
+		return new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(PersonEdit.this, EducationList.class);
+				intent.putExtra("personId", (int)id);
 				startActivity(intent);
 			}
 		};
