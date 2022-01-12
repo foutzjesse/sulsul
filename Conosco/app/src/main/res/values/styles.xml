@@ -4,7 +4,7 @@
         <!-- your app branding color for the app bar -->
         <item name="colorPrimary">@color/orange</item>
         <!-- darker variant for the status bar and contextual app bars -->
-        <item name="colorPrimaryDark">@color/orange</item>
+        <item name="colorPrimaryDark">@color/d_orange</item>
         <!-- theme UI controls like checkboxes and text fields -->		
         <item name="colorAccent">@color/orange</item>
         <!-- button color -->
@@ -17,7 +17,7 @@
         <!-- <item name="background">@color/background_light</item> -->
         <item name="android:divider">@color/orange</item>
         <item name="android:dividerHeight">1dp</item>
-        <item name="android:listSelector">@drawable/orange</item>
+        <item name="android:listSelector">@drawable/l_orange</item>
         <item name="android:drawSelectorOnTop">false</item>
         <item name="android:cacheColorHint">#00000000</item>
     </style>
