@@ -4,4 +4,7 @@
     <color name="my_green">#77D065</color>
     <color name="my_purple">#B455B6</color>
     <color name="my_gray">#738182</color>
+    <color name="orange">#ff6f00</color>
+    <color name="d_orange">#c43e00</color>
+    <color name="l_orange">#ffa040</color>
 </resources>
