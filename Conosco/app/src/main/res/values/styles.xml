@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources> 
     <style name="AppTheme" parent="Theme.AppCompat">
         <!-- your app branding color for the app bar -->
         <item name="colorPrimary">@color/orange</item>
@@ -17,8 +17,13 @@
         <!-- <item name="background">@color/background_light</item> -->
         <item name="android:divider">@color/orange</item>
         <item name="android:dividerHeight">1dp</item>
-        <item name="android:listSelector">@drawable/l_orange</item>
+        <!--<item name="android:listSelector">@drawable/l_orange</item>-->
         <item name="android:drawSelectorOnTop">false</item>
         <item name="android:cacheColorHint">#00000000</item>
+		<item name="android:textSize">16sp</item>
     </style>
+	
+	<style name="BigListText" parent="android:style/Widget.TextView">
+		<item name="android:textSize">16sp</item>
+	</style>
 </resources>

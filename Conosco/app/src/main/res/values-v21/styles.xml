@@ -20,6 +20,10 @@
         <!-- <item name="android:listSelector">what even goes here?</item> -->
         <item name="android:drawSelectorOnTop">false</item>
         <item name="android:cacheColorHint">#00000000</item>
-        <item name="android:textSize">12px</item>
+        
     </style>
+	
+	<style name="BigListText" parent="android:style/Widget.TextView">
+		<item name="android:textSize">16sp</item>
+	</style>
 </resources>

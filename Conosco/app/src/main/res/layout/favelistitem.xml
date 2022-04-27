@@ -5,9 +5,11 @@
     <TextView
 		android:id="@+id/type"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"/>
+		android:layout_height="wrap_content"
+		style="@style/BigListText"/>
 	<TextView
 		android:id="@+id/value"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"/>
+		android:layout_height="wrap_content"
+		style="@style/BigListText"/>
 </LinearLayout>
