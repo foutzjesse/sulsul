@@ -16,7 +16,7 @@ import com.tigertown.conosco.db.io.*;
 
 public class Contact extends Activity {
 	private ImageView thumbnail;
-	private TextView contactInfo;
+	//private TextView contactInfo;
 	private Button button;
 	private int contactId, personId;
 	private ContactIoClient io;
@@ -38,7 +38,7 @@ public class Contact extends Activity {
 		setContentView(com.tigertown.conosco.R.layout.contact);
 		
 		thumbnail = (ImageView)findViewById(com.tigertown.conosco.R.id.contactthumbnail);
-		contactInfo = (TextView)findViewById(com.tigertown.conosco.R.id.contactInfo);
+		//contactInfo = (TextView)findViewById(com.tigertown.conosco.R.id.contactInfo);
 		button = (Button)findViewById(com.tigertown.conosco.R.id.clicktopick);
         
 		private List<IPersonContact> contax = io.Read(personId);
@@ -101,7 +101,7 @@ public class Contact extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_OK){
 			if(requestCode == CONTACT_PICK_CODE){
-				contactInfo.setText("");
+				//contactInfo.setText("");
 				
 				Cursor c1;
 				
@@ -115,7 +115,7 @@ public class Contact extends Activity {
 					String thumbnailUri = c1.getString(c1.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI));
 					
                     updateUi(id, name, thumbnailUri);
-                    //io.upsertSingle(
+                    io.upsertSingle(personId, 0, id);
                 }
 				c1.close();
 			}
@@ -123,8 +123,8 @@ public class Contact extends Activity {
 	}
     
     private void updateUi(String id, String name, String thumbnailUri) {
-        contactInfo.append("ID: "+id);
-		contactInfo.append("Name: "+name);
+        //contactInfo.append("ID: "+id);
+		//contactInfo.append("Name: "+name);
     				
         if (thumbnailUri != null)
             thumbnail.setImageURI(Uri.parse(thumbnailUri));
