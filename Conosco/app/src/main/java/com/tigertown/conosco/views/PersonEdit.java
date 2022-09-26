@@ -59,6 +59,7 @@ public class PersonEdit extends Activity implements IView<IPerson>
 		saveButton = (Button)findViewById(R.id.saveperson);
 		saveButton.setOnClickListener(getSaveClickListener());
 		builder1 = new AlertDialog.Builder(this);
+		imgthumbnail = (ImageView)findViewById(R.id.imgthumbnail);
 		
 		presenter.loadData(id);
 	}
