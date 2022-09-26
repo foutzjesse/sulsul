@@ -18,6 +18,7 @@ public class PersonEdit extends Activity implements IView<IPerson>
 {
 	private PersonPresenter presenter;
 	private Integer id;
+	private ImageView imgthumbnail;
 	AlertDialog.Builder builder1;
 	
 	public EditText howMet, hometown, residence,
