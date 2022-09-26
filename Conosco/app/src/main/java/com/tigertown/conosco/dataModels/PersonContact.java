@@ -1,8 +1,10 @@
 package com.tigertown.conosco.dataModels;
 import com.tigertown.conosco.global.modelInterfaces.*;
+import com.tigertown.conosco.db.external.*;
 
 public class PersonContact implements IPersonContact
 {
+    private ContactProvider externalProvider;
 	private Integer id;
 	private Integer type;
 	private String value;
@@ -11,6 +13,7 @@ public class PersonContact implements IPersonContact
 		this.id = id;
 		this.type = t;
 		this.value = v;
+        externalProvider = new ContactProvider();
 	}
 
 	public Integer getId()
@@ -36,4 +39,10 @@ public class PersonContact implements IPersonContact
 	public String getValue()
 	{
 		return value;
-	}}
+	}
+    
+    public Uri getThumbnail()
+    {
+        return externalProvider.getContactImage(value);
+    }
+}
