@@ -9,4 +9,5 @@ public interface IPersonContact
 	public void setType(Integer t);
 	public String getValue();
 	public void setValue(String v);
+	public Uri getThumbnail();
 }
