@@ -113,18 +113,22 @@ public class Contact extends Activity {
 					String id = c1.getString(c1.getColumnIndex(ContactsContract.Contacts._ID));
 					String name = c1.getString(c1.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 					String thumbnailUri = c1.getString(c1.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI));
-					contactInfo.append("ID: "+id);
-					contactInfo.append("Name: "+name);
-                    
-                    //io.upsertSingle(
 					
-					if (thumbnailUri != null)
-						thumbnail.setImageURI(Uri.parse(thumbnailUri));
-					//else
-						//thumbnail.setImageResource(R.drawable.ic_person);
-				}
+                    updateUi(id, name, thumbnailUri);
+                    //io.upsertSingle(
+                }
 				c1.close();
 			}
 		}
 	}
+    
+    private void updateUi(String id, String name, String thumbnailUri) {
+        contactInfo.append("ID: "+id);
+		contactInfo.append("Name: "+name);
+    				
+        if (thumbnailUri != null)
+            thumbnail.setImageURI(Uri.parse(thumbnailUri));
+        //else
+            //thumbnail.setImageResource(R.drawable.ic_person);
+    }
 }
