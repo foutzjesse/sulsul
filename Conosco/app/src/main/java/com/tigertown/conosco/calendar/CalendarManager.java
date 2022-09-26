@@ -1,7 +1,18 @@
 package com.tigertown.conosco.calendar;
+import java.util.*;
+import android.content.*;
+import android.app.*;
+import android.net.*;
+import android.database.*;
 
 public class CalendarManager
 {
+	Activity parentActivity;
+	
+	public CalendarManager(Activity a) {
+		parentActivity = a;
+	}
+	
 	public void setAlarm() {
 		// Quote in Morning at 08:32:00 AM
 		Calendar calendar = Calendar.getInstance();
@@ -17,15 +28,14 @@ public class CalendarManager
 			calendar.add(Calendar.DATE, 1);
 		}
 
-		Intent myIntent = new Intent(context, DailyReceiver.class);
+		Intent myIntent = new Intent(parentActivity, AlarmReceiver.class);
 		int ALARM1_ID = 10000;
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(
-		context, ALARM1_ID, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(parentActivity, ALARM1_ID, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		AlarmManager alarmManager = (AlarmManager) parentActivity.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 	}
 	
-	public void AddReminder()
+	/*public void AddReminder()
 	{
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(...);
@@ -43,7 +53,7 @@ public class CalendarManager
 		
 //		AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 //		mgr.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pi);
-	}
+	}*/
 	
 	private String getCalendarUriBase(Activity act)
 	{

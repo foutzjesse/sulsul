@@ -1,4 +1,7 @@
 package com.tigertown.conosco.calendar;
+import android.content.*;
+import java.util.*;
+import android.app.*;
 
 public class WakeupReceiver extends BroadcastReceiver {
 	@Override
@@ -18,7 +21,7 @@ public class WakeupReceiver extends BroadcastReceiver {
 				calendar.add(Calendar.DATE, 1); //adds next day?
 			}
 
-			Intent myIntent = new Intent(context, DailyReceiver.class);
+			Intent myIntent = new Intent(context, AlarmReceiver.class);
 			int ALARM1_ID = 10000;
 			PendingIntent pendingIntent = PendingIntent.getBroadcast(context, ALARM1_ID, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 			

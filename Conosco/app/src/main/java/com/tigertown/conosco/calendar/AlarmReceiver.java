@@ -1,8 +1,15 @@
 package com.tigertown.conosco.calendar;
+import android.content.*;
+import android.app.*;
+import android.net.*;
+import android.media.*;
+import android.support.v4.app.*;
+import com.tigertown.conosco.*;
+import android.graphics.*;
 
-public class AlarmReceiver extends BroadcastReceiver {
-	DatabaseHelper databaseHelper;
-
+public class AlarmReceiver /*extends BroadcastReceiver*/ {
+	//DatabaseHelper databaseHelper;
+/*
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
@@ -27,9 +34,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 		.setAutoCancel(true).setWhen(when)
 		.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
 		.setStyle(new NotificationCompat.BigTextStyle().bigText(quote))
-		.setContentIntent(pendingIntent)
-		.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});  // Declair VIBRATOR Permission in AndroidManifest.xml
+		.setContentIntent(pendingIntent);
+		//dont buzz
+		.//setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});  // Declair VIBRATOR Permission in AndroidManifest.xml
 	
 	notificationManager.notify(5, mNotifyBuilder.build());
-	}
+	}*/
 }
