@@ -18,8 +18,9 @@ public class Contact extends Activity {
 	private ImageView thumbnail;
 	private TextView contactInfo;
 	private Button button;
-	private int contactId;
+	private int contactId, personId;
 	private ContactIoClient io;
+    private IPersonContact contact;
 	
 	public Contact() {
 		this.io = new ContactIoClient();
@@ -31,13 +32,27 @@ public class Contact extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        
+        personId = getIntent().getExtras().getInt("personId");
+        
 		setContentView(com.tigertown.conosco.R.layout.contact);
 		
 		thumbnail = (ImageView)findViewById(com.tigertown.conosco.R.id.contactthumbnail);
 		contactInfo = (TextView)findViewById(com.tigertown.conosco.R.id.contactInfo);
 		button = (Button)findViewById(com.tigertown.conosco.R.id.clicktopick);
-		
-		button.setOnClickListener(new View.OnClickListener() {
+        
+		private List<IPersonContact> contax = io.Read(personId);
+        if (contax != null)
+            contact = contax.get(0);
+        else
+            contact = new PersonContact(personId, null, null);
+        
+        if (contact != null)
+        {
+            //TODO set display (break out from onActivityResult)
+        }
+        
+        button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				
@@ -98,9 +113,10 @@ public class Contact extends Activity {
 					String id = c1.getString(c1.getColumnIndex(ContactsContract.Contacts._ID));
 					String name = c1.getString(c1.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 					String thumbnailUri = c1.getString(c1.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI));
-					//figure out how to open contacts app
 					contactInfo.append("ID: "+id);
 					contactInfo.append("Name: "+name);
+                    
+                    //io.upsertSingle(
 					
 					if (thumbnailUri != null)
 						thumbnail.setImageURI(Uri.parse(thumbnailUri));
