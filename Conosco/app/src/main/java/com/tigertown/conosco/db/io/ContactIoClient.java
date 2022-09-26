@@ -10,10 +10,10 @@ import android.content.*;
 
 public class ContactIoClient extends IoClientBase<IPersonContact> implements IPersonalDataIo<IPersonContact>
 {
-	public ContactIoClient(){
+    public ContactIoClient(){
 		super(ContactsPeeps.TABLE_NAME);
 	}
-	
+    
 	public List<IPersonContact> read(int id)
 	{
 		List<IPersonContact> list = new ArrayList<IPersonContact>();
